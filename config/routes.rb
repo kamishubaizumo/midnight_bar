@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+
       # 管理者用
       # URL /admin/sign_in ...
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root to: "homes#home"
+
+      resources :items
     end
 
 
@@ -20,9 +23,14 @@ Rails.application.routes.draw do
     } 
 
 
-     scope module: :public do
+    scope module: :public do
       root to: 'homes#top'
-      get "homes/about"
+      get "home", to: "homes#home"
+        # 年齢確認ページ
+      get 'verify_age', to: "homes#verify_age"
+        # Cookieを使って年齢認証 Yes のルート(すぐにリダイレクトするので View 無し)
+      get 'verified', to: "homes#verified"
+      
     end
 
 

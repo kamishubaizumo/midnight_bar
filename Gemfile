@@ -56,3 +56,6 @@ gem 'tzinfo-data'
 gem "kaminari"
 gem 'devise'
 
+#郵便番号から都道府県名に変換する
+gem 'jp_prefecture'
+gem "enum_help"
