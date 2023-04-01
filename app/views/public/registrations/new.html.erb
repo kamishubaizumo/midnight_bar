@@ -1,91 +1,140 @@
 <div class="container-fluid">
-<div class="col text-center mt-5">
-  <h2>新規会員登録</h2>
-</div>
-
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="row col-lg-8">
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :last_name,"姓" %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class:"form-control" %>
-    </div>
-
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :first_name,"名" %>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"form-control"  %>
-    </div>
+  <div class="text-center mt-5">
+    <h2>新規会員登録</h2>
   </div>
 
-  <div class="row col-lg-8">
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :last_name_kana,"セイ" %>
-      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name", class:"form-control" %>
-    </div>
-
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :first_name_kana,"メイ" %>
-      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name", class:"form-control"  %>
-    </div>
-  </div>
-
-  <div class="row col-lg-8 mt-3">
-    <div class="field col-4 text-center">
-      <%= f.label :birth,"生年月日" %> &nbsp;
-      <%= f.date_select :birth, 
-      use_month_numbers: true,start_year: 1930,end_year: (Time.now.year - 20), default: Date.new(1980, 1, 1) %>
-    </div>
-  </div>
-
-  <div class="row col-lg-8">
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :post_code,"郵便番号" %>
-      <%= f.text_field :post_code, autofocus: true, id: "prefecture", placeholder:"00000000",class:"form-control" %>
-    </div>
-  </div>
-
-
-    <div class="row col-lg-8">
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :prefecture_name, "住所1" %>
-      <%= f.text_field :prefecture_code, autofocus: true, id: "address", placeholder:"",class:"form-control" %>
-    </div>
-  </div>
   
-  <div class="row col-lg-8">
-    <div class="field col-sm-5 col-md-5">
-      <%= f.label :other_address, "アパート" %>
-      <%= f.text_field :other_address, autofocus: true, id: "address", placeholder:"千葉県千葉市中央区0-0",class:"form-control" %>
+  <%= form_with model: @customer, url: new_customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+
+    <div class="row col-md-10 mt-5">
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :last_name,"姓" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :last_name, autofocus: true,class:"form-control" %>
+      </div>
+
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :first_name,"名" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :first_name, autofocus: true, class:"form-control"  %>
+      </div>
     </div>
-  </div>
+
+    <div class="row col-md-10 mt-2">
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :last_name_kana,"セイ" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :last_name_kana, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :first_name_kana,"メイ" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :first_name_kana, autofocus: true, class:"form-control"  %>
+      </div>
+    </div>
+
+      
+      <div class="row col-sm-10 my-5 justify-content-center">
+        <div class="col col-sm-3 my-2">
+          <%= f.label :birth,"生年月日" %><small class="text-danger"><sup>※</sup>後から変更できません</small>
+        </div>
+        <div class="row col-sm-5">
+          <%= f.date_select :birth,
+            { use_month_numbers: true,
+              start_year: (Time.now.year - 100),
+              end_year: (Time.now.year),
+              default: nil,
+              prompt: { day: '日', month: '月', year: '年'},
+              include_blank: false, 
+              required: true
+            },
+            { class: "form-control mx-2", 
+              style: 'display: inline-block;width: auto;'
+            }
+          %>
+        </div>
+      </div>
+      <!--date_selectで、カラム名,{引数},{class}
+        user_month_nubers ・・・月を整数で扱うかどうか選ぶ。falseは文字列。
+        start_year Timeモデルから今の年を取得し、-100で、100歳まで選べる
+        defalult: nil　値が空。
+        default: Date.new( Time.current.year, 1, 1 )　だと、年だけが現在値になり、月と日は prompt オプションで指定した値になります
+        Time.now.year, 1,1　の場合、現在の年の1月1日がデフォルト値として設定され、年だけ選択しても必ず1月1日が選択されるようになります。
+        
+        prompt:　デフォルト値とは別に、選択肢の先頭に表示されるオプション。デフォルト値とは別
+        include_blank: 一番最初に空白のオプションを生成するかどうかを設定するオプション。
+        true    空白のオプションが生成されず、最初に指定したpromptオプションによってラベルが表示 
+        false   一番最初に空白のオプションが生成されます。defaultオプションが設定されていない場合、空白のオプションが選択された状態になる
+        required: true。空を禁止にする。
+      -->
+    
+
+    <div class="row col-md-10 my-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :postcode,"郵便番号" %><small class="text-danger">半角数字で入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :postcode, autocomplete: 'postcode',placeholder: "000-0000", class: 'form-control' %>
+      </div>
+<!--IDを指定していないが、検証ツールで確認すると、costomer_postcode　というIDが生成されている。user_idなど。-->
+
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :prefecture_name, "都道府県" %> <small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+      </div>
+    </div>
 
 
-  <div class="field mt-2">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field mt-2">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password"  %>
-  </div>
+    <div class="row col-md-10">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_city, "市区町村・町域" %> <small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation,"確認パスワード" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_street, "番地" %><small class="text-danger">半角数字と-(ﾊｲﾌﾝ)のみ入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :address_street, autocomplete: 'address_street',placeholder:"0-0-0", class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="row col-md-10 mt-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_other, "建物名や部屋番号など" %>
+        <%= f.text_field :address_other, autocomplete: 'address_other', class: 'form-control' %>
+      </div>
+    </div>
 
 
+    <div class="field col-sm-5 col-md-5 mt-3">
+      <%= f.label :email, "メールアドレス" %><small class="text-danger">半角数字と-(ﾊｲﾌﾝ)のみ入力してください<sup>※</sup>入力必須</small>
+      <%= f.email_field :email, autofocus: true,placeholder: "email@exmple.com", autocomplete: "email", class: "form-control" %>
+    </div>
 
-<%= render "public/shared/links" %>
+    <div class="field col-sm-5 col-md-5 mt-3">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %><small class="text-danger"><em><%= @minimum_password_length %> 文字以上で入力してください</em><sup>※</sup>入力必須</small>
+      
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="field col-sm-5 col-md-5 mt-3">
+      <%= f.label :password_confirmation,"確認用パスワード" %><small class="text-danger"><sup>※</sup>入力必須</small>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
+    </div>
+
+    <div class="row col-lg-10 my-5">
+      <div class="col actions text-center col-sm-5 col-md-5" >
+        <%= f.button_tag type: 'submit', class: "btn btn-secondary" do %>
+          <i class="fas fa-glass-cheers"></i>会員登録する
+        <% end %>
+      </div>
+      <div class="col text-center col-md-5">
+        <%= link_to new_customer_session_path do %>
+          <i class="fas fa-beer"></i>会員の方はこちら
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  
 </div>

@@ -16,9 +16,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
       t.date :birth, null: false
-      t.string :postcode, null: false
-      t.string :prefecture_code, null: false
-      t.string :other_address
+      t.integer :postcode, null: false
+      t.integer :prefecture_code, null: false
+      t.string :address_city, null: false
+      t.string :address_street,null: false
+      t.string :address_other
       t.string :tel_number, null: false
       t.boolean :is_deleted, default: false
 

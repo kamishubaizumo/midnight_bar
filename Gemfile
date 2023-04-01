@@ -53,9 +53,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
 
+#ページネーション
 gem "kaminari"
+
+#ユーザー作成
 gem 'devise'
 
 #郵便番号から都道府県名に変換する
 gem 'jp_prefecture'
+
+#enumを、日本語にする
 gem "enum_help"

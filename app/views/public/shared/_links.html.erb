@@ -1,8 +1,12 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to new_session_path(resource_name) do %>
+    <i class="fas fa-beer"></i>会員の方はこちら
+  <% end %>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <%= link_to new_registration_path(resource_name) do %>
+    <i class="fas fa-glass-cheers"></i>新規会員登録はこちら
+  <% end %>
 <% end %>
 
