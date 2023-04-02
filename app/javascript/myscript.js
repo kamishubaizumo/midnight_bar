@@ -1,6 +1,6 @@
 jQuery(document).on("turbolinks:load", function () {
 
-  // 郵便番号にハイフンを付けるスクリプト
+  // 郵便番号にハイフンを付けるスクリプト。強制半角数字
   $(function () {
     $("#customer_postcode").on('keyup', function () {
       let val = $(this).val().replace(/[^0-9]/g, '');
@@ -27,6 +27,17 @@ jQuery(document).on("turbolinks:load", function () {
     });
   });
 
+
+
+
+  // 電話番号は、半角数字のみ
+  $(function () {
+    $("#customer_tel_number").on("input", function () {
+      var inputVal = $(this).val();
+      var outputVal = inputVal.replace(/[^\d]/g, "");
+      $(this).val(outputVal);
+    });
+  });
 
 
 

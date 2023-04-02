@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2023_03_30_064803) do
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "name", null: false
-    t.integer "postcode", null: false
+    t.string "postcode", null: false
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2023_03_30_064803) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birth", null: false
-    t.integer "postcode", null: false
+    t.string "postcode", null: false
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2023_03_30_064803) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "postcode", null: false
+    t.string "postcode", null: false
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false

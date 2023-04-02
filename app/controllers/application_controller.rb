@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
+  def after_sign_in_path_for(resource)
+    home_path
+  end
+
+  def after_sign_out_path_for(resouce)
+    home_path
+  end
+
+
+  
 
   protected
 
@@ -13,11 +23,11 @@ class ApplicationController < ActionController::Base
       :first_name_kana,
       :birth,
       :postcode,
-      :prefecture_name,
+      :prefecture_code,
       :address_city,
       :address_street,
-      :address_other
-      
+      :address_other,
+      :tel_number
 
     ])
   end

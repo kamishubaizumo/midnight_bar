@@ -1,10 +1,9 @@
 <div class="container-fluid">
-  <div class="text-center mt-5">
+  <div class="text-center pt-5">
     <h2>新規会員登録</h2>
   </div>
 
-  
-  <%= form_with model: @customer, url: new_customer_registration_path do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="row col-md-10 mt-5">
@@ -101,9 +100,16 @@
       </div>
     </div>
 
+    <div class="row col-md-10 mt-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :tel_number, "電話番号" %><small class="text-danger">半角数字のみ入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :tel_number, autocomplete: 'tel_number', placeholder: "0001112222",class: 'form-control' %>
+      </div>
+    </div>
+
 
     <div class="field col-sm-5 col-md-5 mt-3">
-      <%= f.label :email, "メールアドレス" %><small class="text-danger">半角数字と-(ﾊｲﾌﾝ)のみ入力してください<sup>※</sup>入力必須</small>
+      <%= f.label :email, "メールアドレス" %><small class="text-danger"><sup>※</sup>入力必須</small>
       <%= f.email_field :email, autofocus: true,placeholder: "email@exmple.com", autocomplete: "email", class: "form-control" %>
     </div>
 
@@ -122,14 +128,13 @@
 
     <div class="row col-lg-10 my-5">
       <div class="col actions text-center col-sm-5 col-md-5" >
-        <%= f.button_tag type: 'submit', class: "btn btn-secondary" do %>
-          <i class="fas fa-glass-cheers"></i>会員登録する
-        <% end %>
+
+        <%= f.submit "登録する", class: "btn btn-secondary" %>
       </div>
+        <% end %>
       <div class="col text-center col-md-5">
         <%= link_to new_customer_session_path do %>
           <i class="fas fa-beer"></i>会員の方はこちら
-        <% end %>
       </div>
     </div>
   <% end %>

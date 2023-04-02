@@ -15,9 +15,27 @@
 
   <body>
 
-    <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
+
+    <!--バニーガールの画像をクリックすると、ナビが出てくる。TOPページにはでないようにしたい-->
+    <% unless current_page?(root_path) %>
+    <div>
+      <img src="" alt="ナビゲート">
+        <div><%= link_to "会員登録したい(新規登録)", new_customer_registration_path %></div>
+        <div><%= link_to "ログイン", new_customer_session_path %></div>
+        <div><%= link_to "ログアウト", destroy_customer_session_path,method: :delete %></div>
+        <div><%= link_to "会員証を見る(マイページ)" %></div>
+        <div><%= link_to "商品を見せて(商品一覧)" %></div>
+        <div><%= link_to "注文票を見る(カート内)" %></div>
+        <div><%= link_to "店から出る(TOP)", root_path %></div>
+    </div>
+    <% end %>
+    
+    
 
     <%= yield %>
     
+    <header>
+      <small>&copy; 2023 kamishubaizumo</small>
+    </header>
   </body>
 </html>
