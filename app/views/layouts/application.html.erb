@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
@@ -17,17 +17,23 @@
 
 
     <!--バニーガールの画像をクリックすると、ナビが出てくる。TOPページにはでないようにしたい-->
-    <% unless current_page?(root_path) %>
-    <div>
-      <img src="" alt="ナビゲート">
-        <div><%= link_to "会員登録したい(新規登録)", new_customer_registration_path %></div>
-        <div><%= link_to "ログイン", new_customer_session_path %></div>
-        <div><%= link_to "ログアウト", destroy_customer_session_path,method: :delete %></div>
-        <div><%= link_to "会員証を見る(マイページ)" %></div>
-        <div><%= link_to "商品を見せて(商品一覧)" %></div>
-        <div><%= link_to "注文票を見る(カート内)" %></div>
-        <div><%= link_to "店から出る(TOP)", root_path %></div>
+    <% if current_page?(home_path || customer_path ) %>
+    <div class="toggle-menu">
+      <%= image_tag "menu_bunnygirl.png", size:"120x120" %>
     </div>
+    <nav class="menu">
+      <% if customer_signed_in? %>
+        <div><%= link_to "会員証を見る(マイページ)" %></div>
+        <div><%= link_to "注文票を見る(カート内)" %></div>
+        <div><%= link_to "サインアウト", destroy_customer_session_path,method: :delete %></div>
+
+      <% else %>
+        <div><%= link_to "会員登録したい(新規登録)", new_customer_registration_path %></div>
+        <div><%= link_to "サインイン", new_customer_session_path %></div>
+      <% end %>
+        <div><%= link_to "商品を見せて(商品一覧)" %></div>
+        <div><%= link_to "店から出る(TOP)", root_path %></div>
+    </nav>
     <% end %>
     
     

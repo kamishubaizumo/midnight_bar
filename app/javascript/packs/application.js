@@ -16,7 +16,7 @@ import "bootstrap";
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application.scss";
 
-import "mystyle.css";
+import "mystyle.scss";
 import "myscript.js";
 
 Rails.start()

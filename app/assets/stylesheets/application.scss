@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+.background {
+  background: #ccc;
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.my-card {
+  background-image: image-url('wasi.jpg') !important;
+  width: 100%;
+
+}
+
+.my-card-header {
+  background: #fff;
+}
+
+.my-card-body h3 {
+  text-align: center;
+}
+
+.my-card-content {
+  border-bottom: solid 1px #FFCC33
+}

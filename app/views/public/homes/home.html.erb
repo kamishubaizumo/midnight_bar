@@ -1,18 +1,19 @@
 
 
-<div class="bunnyGirl">
+<div class="bunnyGirl py-1">
   <p>いらっしゃいませ</p>
   <ul>
     <li>会員登録</li>
-    <li>ログイン</li>
-    <li>マイページ</li>
+    <li><%= link_to "サインイン", new_customer_session_path %></li>
+    <li><%= link_to "会員カード", current_customer %></li>
+    <li>サインアウト</li>
     <li>お問い合わせ</li>
     <li>商品を見る</li>
     <li>閉じる</li>
   </ul>
 </div>
 
-<div class="bartender">
+<div class="bartender py-1">
   <p>ご注文を承ります</p>
   <ul>
     <li>商品一覧</li>
@@ -21,7 +22,7 @@
   </ul>
 </div>
 
-<div class="cashier">
+<div class="cashier py-1">
   <p>お会計をします</p>
   <ul>
     <li>カートを見る</li>

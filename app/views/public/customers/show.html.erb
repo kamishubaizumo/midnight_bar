@@ -1,0 +1,32 @@
+<div class="background">
+<div class="container">
+  <div class="my-card">
+    <div class="my-card-header">
+    </div>
+    <div class="my-card-body">
+      <h3 class="my-card-title">会員証</h3>
+      <div class="my-card-content">
+        氏名: <%= @customer.last_name %>&nbsp;<%= @customer.first_name %>
+      </div>
+      <div class="my-card-content">
+        シメイ: <%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %>
+      </div>
+      <div class="my-card-content">
+        生年月日: <%= @customer.birth %>&nbsp; 年齢：<%= @customer.age %>歳
+      </div>
+      <div class="my-card-content">
+        電話番号: <%= @customer.tel_number %>&nbsp;メールアドレス<%= @customer.email %>
+      </div>
+      <div class="my-card-content">
+        郵便番号: <%= @customer.postcode %>
+      </div>
+      <div class="my-card-content">
+        住所: <%= @customer.join_address %>
+      </div>
+      <div class="my-card-content">
+        住所: <%= @customer.last_name %>&nbsp;<%= @customer.first_name %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
