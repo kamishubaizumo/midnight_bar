@@ -1,7 +1,22 @@
-<h1>商品一覧</h1>
+<h2>商品一覧</h2>
 
 <% @items.each do |item| %>
-  <%= item.name %>
-  <%= item.text %>
+  <h5>品名:<%= item.item_name %></h5>
+  <p>商品説明:<%= item.item_text %></p>
+  
+  <p>タグリスト:
+    <% tag_list.each do |tag_list| %>
+    <div>
+        <%= link_to tag_list.tag_name,search_tag_path(tag_id: tag_list.id) %>
+        <!--コントローラで、ttag_idを取得して、ブロック変数tag_listのidを表示-->
+
+        <%= "(#{tag_list.items.count})" %>
+      </div>
+    <% end %>
+  </p>
+
+  <p>&yen;<%= item.on_tax_price %>(税込み)</p>
+  <p>在庫数:<%= item.stock %></p>
+  <p>販売ステータス<%= item.sale_status %></p>
 
 <% end %>

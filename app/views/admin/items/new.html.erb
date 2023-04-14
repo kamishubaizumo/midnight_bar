@@ -1,2 +1,30 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h2>商品追加</h2>
+
+<%= form_with model:@item, url:admin_items_path,local: true do |f|%>
+  画像:<%= f.file_field :image, accept: "image/*" %>
+  品名:<%= f.text_field :item_name, class: "form-control" %>
+  説明:<%= f.text_area :item_text, class: "form-control" %>
+  税抜き価格<%= f.text_field :no_tax_price %>
+  <br>
+  販売ステータス:<%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
+  <br>
+  在庫数<%= f.text_field :stock %>
+
+
+  タグの追加:
+  <p>タグ</p>
+    <%= f.text_field :tag_name, placeholder: "タグを複数つけるには空白で区切ってください" %>
+    <%= f.submit "投稿" %>
+    <button id="clear-button" type="button">クリア</button>
+
+  
+
+<% end %>
+
+ クリックすると、自動でフォームに追加される
+<% @tag_list.each do |tag| %>
+  <div><%#= tag_list.tag_name + " " %>
+
+  <%= link_to tag.tag_name, '#', class: 'tag-link' %>
+  </div>
+<% end %>
