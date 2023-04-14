@@ -51,4 +51,40 @@ jQuery(document).on("turbolinks:load", function () {
 
 
 
+  // タグを自動で入れる
+
+  // テキストボックスを取得
+  const tagInput = $('input[name="item[tag_name]"]');
+
+  // タグをクリックした時の処理
+  const tagLinks = $('.tag-link');
+  tagLinks.each(function () {
+    $(this).on("click", function (e) {
+      // リンクのデフォルト動作を無効化
+      e.preventDefault();
+      // テキストボッkすの内容にタグを追加
+      const clickedTag = $(this).text().trim();
+      if (tagInput.val()) {
+        tagInput.val("${tagInput.val()} $(clikedTag)");
+      } else {
+        tagInput.val(clickedTag);
+      }
+    });
+  });
+
+  // タグのクリアボタン
+  const clearButton = $("#cleaer-button");
+
+  clearButton.on("click", function (e) {
+    tagInput.val("");
+  });
+
+
+
+
+
+
+
+
+
 });

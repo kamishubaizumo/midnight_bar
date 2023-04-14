@@ -1,12 +1,23 @@
 <h2>商品追加</h2>
 
-<%= form_with model:@item, url:admin_items_path,local: true do |f|%>
+
+<div class="container-fluid">
+  <div class="col-sm-8">
+  
+    <div class="row">
+      <div class="col">
+      </div>
+    </div>
+
+  </div>
+</div>
+<%= form_with model:@item, url:admin_items_path do |f|%>
   画像:<%= f.file_field :image, accept: "image/*" %>
   品名:<%= f.text_field :item_name, class: "form-control" %>
   説明:<%= f.text_area :item_text, class: "form-control" %>
-  税抜き価格<%= f.text_field :no_tax_price %>
+  税抜き価格:&yen;<%= f.text_field :no_tax_price %>
   <br>
-  販売ステータス:<%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
+  販売ステータス:<%= f.select :sale_status,[["販売中",0],["販売停止中",1],["入荷待ち",2]],include_blank: "選択して下さい" %>
   <br>
   在庫数<%= f.text_field :stock %>
 

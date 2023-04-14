@@ -1,0 +1,15 @@
+<h2>タグの追加と一覧</h2>
+
+<%= form_with model: @tag, url: admin_tags_path do |f| %>
+  <%= f.text_field :tag_name %>
+  <%= f.submit "投稿" %>
+
+<% end %>
+
+
+<h2>タグ一覧</h2>
+<% @tags.each do |tags| %>
+  <%= tags.tag_name %>
+  <%#= "(#{tags.items.count})" %>
+  <%= link_to "x",admin_tag_path(tags.id), method: :delete %>
+<% end %>
