@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   
 
-
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :public do
+    get 'contacts/new'
+    get 'contacts/confirm'
+  end
 
       # 管理者用
       # URL /admin/sign_in ...
@@ -12,8 +19,10 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: "homes#home"
 
+      resources :customers
       resources :items
       resources :tags
+      resources :contacts
     end
 
 
@@ -30,6 +39,7 @@ Rails.application.routes.draw do
       get "home", to: "homes#home"
 
       resources :customers, only: [:show, :edit, :update]
+      resources :contacts
       
     end
 

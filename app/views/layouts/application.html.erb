@@ -22,6 +22,7 @@
       <%= image_tag "menu_bunnygirl.png", size:"120x120" %>
     </div>
     <nav class="menu">
+
       <% if customer_signed_in? %>
         <div><%= link_to "会員証を見る(マイページ)" %></div>
         <div><%= link_to "注文票を見る(カート内)" %></div>
@@ -34,6 +35,11 @@
         <div><%= link_to "商品を見せて(商品一覧)" %></div>
         <div><%= link_to "店から出る(TOP)", root_path %></div>
     </nav>
+    <% end %>
+
+    <% if admin_signed_in? %>
+      <div>link_to "会員一覧", </div>
+    <% else %>
     <% end %>
     
     
