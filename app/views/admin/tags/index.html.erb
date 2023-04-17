@@ -1,15 +1,52 @@
-<h2>タグの追加と一覧</h2>
+<div class="container-fluid">
+  <div class="text-center my-5">
+    <h2>タグの追加と一覧</h2>
+  </div>
 
-<%= form_with model: @tag, url: admin_tags_path do |f| %>
-  <%= f.text_field :tag_name %>
-  <%= f.submit "投稿" %>
+  
+  <%= form_with model: @tag, url: admin_tags_path do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-md-4 my-3">
+          <%= f.text_field :tag_name, class: "form-control" %>
+      </div>
+      <div class="col col-md-1 text-center my-3">
+          <%= f.submit "追加", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
 
-<% end %>
+
+  <div class="col mt-3">
+    <div class="text-center my-4">
+       <h2>タグ一覧</h2>
+    </div>
+
+    <div class="col col-md-12">
 
 
-<h2>タグ一覧</h2>
-<% @tags.each do |tags| %>
-  <%= tags.tag_name %>
-  <%#= "(#{tags.items.count})" %>
-  <%= link_to "x",admin_tag_path(tags.id), method: :delete %>
-<% end %>
+      <% @tags.each do |tags| %>  
+      <span class="div-tag">
+          <span class="orign-tag">
+            <%= link_to edit_admin_tag_path(tags.id),class:"no-underline" do %>
+              <span class="py-1 px-1"><%= tags.tag_name %></span>
+            <% end %>
+          </span>
+          <span class="delete-tag" >
+            <%= link_to admin_tag_path(tags.id), method: :delete, data:{confirm: "「#{tags.tag_name}」を削除しますか？"} do %>
+              <span class="py-1 px-1">X</span>
+            <% end %>
+          </span>
+          <span class="tag-count">
+            <%= "(#{tags.items.count})" %>
+          </span>
+      </span>
+      <% end %>
+    </div>      
+  </div>
+</div>
+
+
+
+
+
+

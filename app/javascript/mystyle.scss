@@ -2,6 +2,12 @@
   list-style: none;
 }
 
+
+// link_to do 下線消す
+a {
+  text-decoration: none !important;
+}
+
 body {
   background: #397;
   // background: #000;
@@ -11,4 +17,46 @@ body {
 /* トグルメニュー */
 .menu {
   display: none;
+}
+
+
+
+
+// タグ
+
+.div-tag {
+  margin: 10px 8px;
+  display: inline-block;
+
+}
+
+.orign-tag {
+  font-size: 8px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background: #fff3f3;
+  padding: 5px;
+  text-decoration: none;
+  color: #555;
+}
+
+.orign-tag:hover {
+  background-color: #daf1ff;
+}
+
+.delete-tag {
+  font-size: 8px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 5px 3px;
+
+  background: #ffffff;
+}
+
+.delete-tag:hover {
+  background: #ffc55b;
+}
+
+.tag-count {
+  margin: 5px 5px 5px 0;
 }

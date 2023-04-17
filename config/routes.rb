@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
   
 
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'contacts/new'
-    get 'contacts/confirm'
-  end
-
       # 管理者用
       # URL /admin/sign_in ...
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -23,6 +14,7 @@ Rails.application.routes.draw do
       resources :items
       resources :tags
       resources :contacts
+      resources :orders
     end
 
 
