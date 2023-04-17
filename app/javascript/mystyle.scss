@@ -4,8 +4,25 @@
 
 
 // link_to do 下線消す
+
 a {
   text-decoration: none !important;
+}
+
+.admin-nav a {
+  color: #c6c6c6;
+}
+
+.admin-nav a:hover {
+  color: rgb(255, 255, 255);
+}
+
+h2 {
+  color: #fff;
+}
+
+.note-text {
+  color: #f00;
 }
 
 body {
@@ -25,17 +42,19 @@ body {
 // タグ
 
 .div-tag {
-  margin: 10px 8px;
+  margin: 8px;
+  // インラインブロックにしないと、タグの中身が改行されてしまう
   display: inline-block;
 
 }
 
 .orign-tag {
-  font-size: 8px;
+  font-size: 0.8em;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   background: #fff3f3;
   padding: 5px;
+  padding-right: 0;
   text-decoration: none;
   color: #555;
 }
@@ -45,10 +64,10 @@ body {
 }
 
 .delete-tag {
-  font-size: 8px;
+  font-size: 0.8em;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
-  padding: 5px 3px;
+  padding: 5px 2px;
 
   background: #ffffff;
 }
@@ -58,5 +77,5 @@ body {
 }
 
 .tag-count {
-  margin: 5px 5px 5px 0;
+  margin: 5px 3px 5px 0;
 }
