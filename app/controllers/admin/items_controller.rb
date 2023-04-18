@@ -10,6 +10,11 @@ class Admin::ItemsController < ApplicationController
     @tag_list = Tag.all
   end
 
+  def confirm
+    @item = Item.new(item_params)
+    render :new if @item.invalid?
+  end
+
   def create
     
   end
@@ -33,6 +38,7 @@ class Admin::ItemsController < ApplicationController
   private
   
   def item_params
+    params.require(:item).permit(:image, :item_name, :item_text, :no_tax_price, :sale_status, :stock )
     
   end
 

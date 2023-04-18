@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       resources :customers
       resources :items
+      post "confirm", to: "items#confirm"
       resources :tags
       resources :contacts
       resources :orders

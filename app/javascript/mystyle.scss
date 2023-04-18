@@ -39,10 +39,10 @@ body {
 
 
 
-// タグ
+// 管理者側のタグ
 
 .div-tag {
-  margin: 8px;
+  margin: 10px;
   // インラインブロックにしないと、タグの中身が改行されてしまう
   display: inline-block;
 
@@ -55,7 +55,7 @@ body {
   background: #fff3f3;
   padding: 5px;
   padding-right: 0;
-  text-decoration: none;
+
   color: #555;
 }
 
@@ -78,4 +78,15 @@ body {
 
 .tag-count {
   margin: 5px 3px 5px 0;
+}
+
+
+// 汎用性タグ
+
+.nomal-tag {
+  font-size: 0.8em;
+  border-radius: 25px;
+  background: #fff3f3;
+  padding: 5px 8px;
+  color: #555;
 }

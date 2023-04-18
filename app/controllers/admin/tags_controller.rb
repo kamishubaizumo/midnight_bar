@@ -4,6 +4,12 @@ class Admin::TagsController < ApplicationController
     @tag = Tag.new
   end
 
+  def new
+    @item = Item.new
+    @tag = Tag.new
+    @tag_list = Tag.all
+  end
+
   def create
     # 半角スペースで区切る
     tags = tag_params[:tag_name].split(" ")
@@ -16,6 +22,8 @@ class Admin::TagsController < ApplicationController
     flash[:notice] = "タグを追加しました"
     
   end
+
+  
 
   def edit
     @tag = Tag.find(params[:id])

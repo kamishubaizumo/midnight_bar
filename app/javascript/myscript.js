@@ -62,10 +62,10 @@ jQuery(document).on("turbolinks:load", function () {
     $(this).on("click", function (e) {
       // リンクのデフォルト動作を無効化
       e.preventDefault();
-      // テキストボッkすの内容にタグを追加
+      // テキストボックスの内容にタグを追加
       const clickedTag = $(this).text().trim();
       if (tagInput.val()) {
-        tagInput.val("${tagInput.val()} $(clikedTag)");
+        tagInput.val(`${tagInput.val()} ${clickedTag}`);
       } else {
         tagInput.val(clickedTag);
       }
@@ -73,7 +73,7 @@ jQuery(document).on("turbolinks:load", function () {
   });
 
   // タグのクリアボタン
-  const clearButton = $("#cleaer-button");
+  const clearButton = $("#clear-button");
 
   clearButton.on("click", function (e) {
     tagInput.val("");

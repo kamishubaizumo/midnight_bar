@@ -1,15 +1,17 @@
 <div class="container-fluid">
 
   <div class="text-center my-5">
-    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> / <%= link_to "商品一覧", admin_items_path %></p>
+    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品一覧", admin_items_path %></p>
   </div>
 
   <div class="text-center my-5">
     <h2>タグの追加と一覧</h2>
   </div>
+
   <div class="col text-center">
     <small class="note-text">半角スペースで区切ると、複数のタグを追加できます</small>
   </div>
+
   <%= form_with model: @tag, url: admin_tags_path do |f| %>
     <div class="row justify-content-center">
       <div class="col-md-4 my-3">
@@ -25,11 +27,12 @@
     <div class="text-center my-4">
        <h2>タグ一覧</h2>
     </div>
+    <div class="text-center">
+      <small class="note-text">タグをクリックすると編集できます</small>
+    </div>
+
   <div class="row mt-3 justify-content-center">
-
     <div class="col col-md-8">
-
-
       <% @tags.each do |tags| %>  
       <span class="div-tag">
           <span class="orign-tag">
