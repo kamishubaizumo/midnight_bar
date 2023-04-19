@@ -11,8 +11,14 @@ Rails.application.routes.draw do
       root to: "homes#home"
 
       resources :customers
-      resources :items
-      post "confirm", to: "items#confirm"
+      resources :items do
+        collection do 
+          post "confirm"
+        end
+        member do
+          patch 'edit_confirm'
+        end
+      end
       resources :tags
       resources :contacts
       resources :orders

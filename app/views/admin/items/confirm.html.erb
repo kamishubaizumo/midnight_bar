@@ -1,2 +1,32 @@
-商品追加の確認画面
+<h2>新規販売確認</h2>
 
+
+<%= form_with model:@item, url: admin_items_path do |f| %>
+
+  <div class="row justify-content-center">
+    <div class="col col-sm-2 text-center">
+      <h4><%= f.label :image %>:</h4>
+    </div>
+    <div class="col-sm-2">
+      <%= f.file_field :image, accept: "image/*" ,placeholder: "商品画像を選択してください" %>
+    </div>
+  </div>
+  
+  <%= f.label :iteme_name, "商品名" %>:
+    <%= f.hidden_field :item_name, class: "form-control" %>
+  <%= f.label :iteme_text, "商品説明" %>
+    <%= f.hidden_field :item_text,placeholder: "キャッチコピー・製造元・製造年月・賞味期限など", class: "form-control" %>
+  <%= f.label :no_tax_price, "税抜き価格" %>
+    &yen;<%= f.hidden_field :no_tax_price %>
+  <%= f.label :sale_status, "販売ステータス" %>
+  販売ステータス:<%= f.hidden_field :sale_status %>
+  <br>
+  <%= f.label :stock,"在庫数" %>:
+  <%= f.hidden_field :stock, class:"form-select" %>
+
+
+
+  <%= f.submit "修正する", name: "back" %>
+  <%= f.submit "投稿する" %>
+
+  <% end %>

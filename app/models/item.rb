@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
 
-  validates :item_name,:text,:no_tax_price,:stock,:sale_status, presence: true
+  validates :item_name,:item_text,:no_tax_price,:stock,:sale_status, presence: true
   
 
   # 画像を取り扱う。

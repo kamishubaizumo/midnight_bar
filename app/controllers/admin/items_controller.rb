@@ -10,12 +10,28 @@ class Admin::ItemsController < ApplicationController
     @tag_list = Tag.all
   end
 
+  # 商品確認画面
   def confirm
     @item = Item.new(item_params)
     render :new if @item.invalid?
   end
 
+  def edit_confirm
+    @item = Item.find(params[:id])
+    @item.attributes = item_params
+    render :edit if @item.invalid?
+  end
+
   def create
+    @item = Item.new(item_params)
+
+    if params[:back] || !@item.save
+      render :new
+    else
+      redirect_to admin_items_path(@item),
+      notice: "#{@item.iteme_name}を販売開始しました"
+    end
+    
     
   end
 
@@ -32,6 +48,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
+
 
   end
 

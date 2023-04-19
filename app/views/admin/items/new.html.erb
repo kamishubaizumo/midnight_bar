@@ -12,7 +12,7 @@
 
 
 
-<%= form_with model:@item, url: admin_confirm_path do |f|%>
+<%= form_with model:@item, url: confirm_admin_items_path do |f|%>
 
   <div class="row justify-content-center">
     <div class="col col-sm-2 text-center">
@@ -47,7 +47,8 @@
 
 <% end %>
 
-  <%= render "add_tag", tag_list: @tag_list %>
+  <!--確認画面から戻るとエラーが出る-->
+  <%#= render "add_tag", tag_list: @tag_list %>
 
     </div>
   </div>
