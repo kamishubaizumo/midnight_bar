@@ -11,14 +11,17 @@ Rails.application.routes.draw do
       root to: "homes#home"
 
       resources :customers
-      resources :items do
-        collection do 
-          post "confirm"
-        end
-        member do
-          patch 'edit_confirm'
-        end
-      end
+      resources :items
+      
+      # 確認画面作成中断
+      # do
+      #   member do
+      #     post "confirm"
+      #     patch 'edit_confirm'
+      #   end
+      #   collection do 
+      #   end
+      # end
       resources :tags
       resources :contacts
       resources :orders
@@ -41,6 +44,10 @@ Rails.application.routes.draw do
       resources :contacts
       
     end
+
+
+    #タグで検索
+  get "search_tag" => "items#search_tag"
 
 
 end

@@ -18,10 +18,10 @@
   <p>商品説明:<%= item.item_text %></p>
   
   <p>タグリスト:
-    <% tag_list.each do |tag_list| %>
+    <% @tag_list.each do |tag_list| %>
     <div>
         <%= link_to tag_list.tag_name,search_tag_path(tag_id: tag_list.id) %>
-        <!--コントローラで、ttag_idを取得して、ブロック変数tag_listのidを表示-->
+        <!--コントローラで、tag_idを取得して、ブロック変数tag_listのidを表示-->
 
         <%= "(#{tag_list.items.count})" %>
       </div>

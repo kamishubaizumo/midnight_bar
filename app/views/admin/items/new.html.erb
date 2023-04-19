@@ -12,7 +12,7 @@
 
 
 
-<%= form_with model:@item, url: confirm_admin_items_path do |f|%>
+<%= form_with model:@item, url: admin_items_path do |f|%>
 
   <div class="row justify-content-center">
     <div class="col col-sm-2 text-center">
@@ -42,13 +42,10 @@
     <%= f.text_field :tag_name, placeholder: "タグを複数つけるには空白で区切ってください" %>
     <%= f.submit "投稿" %>
     <button id="clear-button" type="button">クリア</button>
-
-  
-
 <% end %>
 
   <!--確認画面から戻るとエラーが出る-->
-  <%#= render "add_tag", tag_list: @tag_list %>
+  <%= render "add_tag", tag_list: @tag_list %>
 
     </div>
   </div>
