@@ -1,0 +1,8 @@
+<h2><%= @tag.tag_name %>の商品一覧</h2>
+
+<div>
+  <% @tag_list.each do |tag_list| %>
+    <%= tag_list.tag_name %>
+    <%= "(#{tag_list.items.count})" %>
+  <% end %>
+</div>
