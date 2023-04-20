@@ -23,7 +23,7 @@
         <%= link_to tag.tag_name,search_tag_admin_items_path(tag_id: tag.id) %>
         <!--コントローラで、tag_idを取得して、ブロック変数tag_listのidを表示-->
 
-        <%= "(#{tag.items.count})" %>
+        <%#= "(#{tag.items.count})" %>
       </div>
     <% end %>
   </p>

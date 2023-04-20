@@ -28,14 +28,16 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    #この記述がないとタグを登録できない
-    @item.item_name = params[:item][:item_name]
-    @item.item_text = params[:item][:item_text]
+    #この記述はセキュリティ上問題がある。private以下に設定してあるため必要ない。
+    # @item.item_name = params[:item][:item_name]
+    # @item.item_text = params[:item][:item_text]
+   
     
     #ビューから取ってきたものを拾ってきている
     #split(nil)は非推奨らしいので、半角スペース
-   tag_list = params[:item][:tag_name].split(" ")
+    tag_list = params[:item][:tag_name].split(" ")
 
+    #タグを保存
     if @item.save!
       @item.save_tag(tag_list)
       redirect_to admin_items_path

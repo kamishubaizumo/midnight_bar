@@ -6,9 +6,11 @@
   <div class="col col-md-8">
     <% tag_list.each do |tag| %>
       <span class="div-tag">
+        <%= link_to "#", class="tag-link" do %>
         <span class="nomal-tag">
           <%= link_to tag.tag_name, '#', class: 'tag-link' %>
         </span>
+        end
       </span>
     <% end %>
   </div>

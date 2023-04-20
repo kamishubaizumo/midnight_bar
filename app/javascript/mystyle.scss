@@ -48,6 +48,7 @@ body {
 
 }
 
+//管理者側。タグの追加と一覧
 .orign-tag {
   font-size: 0.8em;
   border-top-left-radius: 25px;
@@ -77,7 +78,7 @@ body {
 }
 
 .tag-count {
-  margin: 5px 3px 5px 0;
+  margin: 5px 2px 5px 0;
 }
 
 
@@ -87,6 +88,6 @@ body {
   font-size: 0.8em;
   border-radius: 25px;
   background: #fff3f3;
-  padding: 5px 8px;
+  padding: 5px 5px;
   color: #555;
 }
