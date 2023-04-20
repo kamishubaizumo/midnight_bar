@@ -2,6 +2,9 @@ class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
     @tag_list = Tag.all
+
+
+    
   end
 
   def new
@@ -24,6 +27,23 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
+    #この記述がないとタグを登録できない
+    @item.item_name = params[:item][:item_name]
+    @item.item_text = params[:item][:item_text]
+    
+    #ビューから取ってきたものを拾ってきている
+    #split(nil)は非推奨らしいので、半角スペース
+   tag_list = params[:item][:tag_name].split(" ")
+
+    if @item.save!
+      @item.save_tag(tag_list)
+      redirect_to admin_items_path
+    else
+      redirect_to new_admin_item_path
+    end
+    
+
 
     #確認画面に遷移
     # if params[:back] || !@item.save
