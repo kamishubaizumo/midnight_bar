@@ -31,10 +31,34 @@ body {
 }
 
 
-/* トグルメニュー */
+/* グローバルナビのトグルメニュー */
 .menu {
   display: none;
 }
+
+// もしくは、右側にポジション固定させるか。迷う。
+
+#position-right {
+  position: fixed;
+  top: 60%;
+  right: 0;
+  transform: translateY(-30%);
+  z-index: 8;
+  text-align: center;
+}
+
+.right-menu {
+
+  margin: 100px 0;
+  padding: 0 7px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background: #fff;
+  z-index: 8;
+  font-size: 0.9em;
+  right: -10px;
+}
+
 
 
 
@@ -93,4 +117,55 @@ body {
 
 .nomal-tag:hover {
   background-color: #daf1ff;
+}
+
+
+// タグ一覧をモーダルウィンドウで表示させる
+
+
+
+#modal-tag {
+  display: none;
+  position: fixed;
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #bcbcbc;
+  z-index: 9;
+}
+
+#modal-overlay {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+
+
+#modal-close {
+  background: #ffd484;
+  width: 100%;
+  text-align: center;
+  border-radius: 25px;
+
+}
+
+#modal-close:hover {
+  background: #ffb835;
+}
+
+.button-link {
+  width: 100%;
+  text-align: center;
+}
+
+.button-link:hover {
+  cursor: pointer;
+
 }

@@ -3,11 +3,18 @@
     <h2><%= @tag.tag_name %>の商品一覧</h2>
   </div>
 
-  <div id="">
-    
+  <!--画面右に固定する-->
+  <div id="position-right">
+    <a class="button-link"><div id="modal-open" class="right-menu">タグ一覧</div></a>
+    <a href="#"><div id="top-upper" class="right-menu">TOPへ</div></a>
   </div>
 
-    <div class="col ">
+  <!--タグ一覧はモーダルウィンドウで表示する-->
+  <div id="modal-tag">
+    <p id="modal-close"><a class="button-link py-3">閉じる</a></p>
+  
+
+    <div class="col">
       <% @tag_list.each do |tag_list| %>
         <span class="div-tag">
           <span class="nomal-tag">
@@ -19,6 +26,9 @@
         </span>
       <% end %>
     </div>
+  </div>
+
+  
   <div class="row">
 
     <div class="col">
@@ -35,9 +45,16 @@
           </div>
         <% end %>
         <%= item.item_text %>
+        在庫数:<%= item.stock %>
+
+
         <% item.tags.each do |tag| %>
-          <%= tag.tag_name %>
-        <% end %>
+        <span class="div-tag">
+          <span class="nomal-tag">
+            <%= link_to tag.tag_name, search_tag_admin_items_path(tag_id: tag.id) %>
+          </span>
+        </span>
+      <% end %>
 
       <% end %>
     </div>
