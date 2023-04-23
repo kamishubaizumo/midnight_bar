@@ -50,7 +50,7 @@ body {
 
 //管理者側。タグの追加と一覧
 .orign-tag {
-  font-size: 0.8em;
+  font-size: 1em;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   background: #fff3f3;
@@ -65,7 +65,7 @@ body {
 }
 
 .delete-tag {
-  font-size: 0.8em;
+  font-size: 1em;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 5px 2px;
@@ -85,9 +85,12 @@ body {
 // 汎用性タグ
 
 .nomal-tag {
-  font-size: 0.8em;
+  font-size: 1em;
   border-radius: 25px;
   background: #fff3f3;
-  padding: 5px 5px;
-  color: #555;
+  padding: 5px 8px;
+}
+
+.nomal-tag:hover {
+  background-color: #daf1ff;
 }

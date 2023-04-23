@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   
 
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
+
       # 管理者用
       # URL /admin/sign_in ...
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -44,9 +41,10 @@ Rails.application.routes.draw do
     scope module: :public do
       root to: 'homes#top'
       get "home", to: "homes#home"
-
+      
+      resources :items, only: [:index, :show]
       resources :customers, only: [:show, :edit, :update]
-      resources :contacts
+      resources :contacts, except: [:destroy]
       
     end
 

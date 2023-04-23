@@ -1,13 +1,7 @@
 class Admin::TagsController < ApplicationController
   def index
-    @tags = Tag.all
     @tag = Tag.new
-  end
-
-  def new
-    @item = Item.new
-    @tag = Tag.new
-    @tag_list = Tag.all
+    @tags = Tag.order(tag_name: :asc)
   end
 
   def create
@@ -20,14 +14,10 @@ class Admin::TagsController < ApplicationController
     end
     redirect_to admin_tags_path
     flash[:notice] = "タグを追加しました"
-    
   end
-
-  
 
   def edit
     @tag = Tag.find(params[:id])
-   
   end
 
   def update
@@ -40,7 +30,6 @@ class Admin::TagsController < ApplicationController
       render "edit"
       flash[:alert] = "タグを更新できませんでした"
     end
-
   end
 
   def destroy

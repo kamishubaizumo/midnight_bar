@@ -2,13 +2,16 @@
   <div class="text-center my-5">
     <h2><%= @tag.tag_name %>の商品一覧</h2>
   </div>
-  <div class="row">
 
-    <div class="sidebar col-sm-2 hidden-xs">
+  <div id="">
+    
+  </div>
+
+    <div class="col ">
       <% @tag_list.each do |tag_list| %>
         <span class="div-tag">
           <span class="nomal-tag">
-            <%= link_to tag_list.tag_name, search_tag_admin_items_path(tag_id: tag.id) %>
+            <%= link_to tag_list.tag_name, search_tag_admin_items_path(tag_id: tag_list.id) %>
           </span>
           <span class="tag-count">
             <%= "(#{tag_list.items.count})" %>
@@ -16,12 +19,33 @@
         </span>
       <% end %>
     </div>
+  <div class="row">
 
     <div class="col">
+      <% @items.each do |item| %>
+
+        <%= link_to admin_item_path(item) do %>
+          <div class="col-sm-3">
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "auto", class: "w-100" %>
+          <% else %>
+            <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+          <% end %>
+          <%= item.item_name %>
+          </div>
+        <% end %>
+        <%= item.item_text %>
+        <% item.tags.each do |tag| %>
+          <%= tag.tag_name %>
+        <% end %>
+
+      <% end %>
     </div>
   </div>
 
 </div>
+
+
 
 
 
