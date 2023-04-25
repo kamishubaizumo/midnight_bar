@@ -1,11 +1,19 @@
 <div class="container-fluid">
+
+   <div class="text-center my-4">
+    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品新規追加", new_admin_item_path %></p>
+  </div>
   <div class="text-center my-5">
     <h2><%= @tag.tag_name %>の商品一覧</h2>
   </div>
 
   <!--画面右に固定する-->
   <div id="position-right">
-    <a class="button-link"><div id="modal-open" class="right-menu">タグ一覧</div></a>
+    <%= link_to admin_items_path do %>
+      <div class="right-menu">商品一覧</div>
+    <% end %>
+    <a class="button-link"><div id="modal-open" class="right-menu">タグ検索</div></a>
+   
     <a href="#"><div id="top-upper" class="right-menu">TOPへ</div></a>
   </div>
 
@@ -31,33 +39,43 @@
   
   <div class="row">
 
-    <div class="col">
-      <% @items.each do |item| %>
+                <% @items.each do |item| %>
+    <div class="col-md-3">
+      <div class="card card-bg">
 
-        <%= link_to admin_item_path(item) do %>
-          <div class="col-sm-3">
-          <% if item.image.attached? %>
-            <%= image_tag item.image, size: "auto", class: "w-100" %>
-          <% else %>
-            <%= image_tag 'no-image', size: "auto", class: "w-100" %>
-          <% end %>
-          <%= item.item_name %>
+                  <%= link_to admin_item_path(item) do %>
+                    
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image, size: "auto", class: "w-100" %>
+                    <% else %>
+                      <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+                    <% end %>
+             
+          <div class="card-body">
+            <h4 class="card-title"><%= item.item_name %></h4>
+                  <% end %>
+                  <p class="card-text card-color pt-2"><%= item.item_text %></p>
+                <ul class="list-group card-color">
+                  <li class="list-group">在庫数:<%= item.stock %></li>
+                  <li class="list-group">販売ステータス:<%= item.sale_status %></li>
+                  <li class="list-group">税抜き価格:&yen;<%= item.no_tax_price %></li>
+                  <li class="list-group">税込み価格:&yen;<%= item.on_tax_price %></li>
+
+                </ul>
+                <div class="card-tag">
+                  <% item.tags.each do |tag| %>
+                  <span class="div-tag">
+                    <span class="nomal-tag">
+                      <%= link_to tag.tag_name, search_tag_admin_items_path(tag_id: tag.id) %>
+                    </span>
+                  </span>
+                <% end %>
+                </div>
           </div>
-        <% end %>
-        <%= item.item_text %>
-        在庫数:<%= item.stock %>
 
-
-        <% item.tags.each do |tag| %>
-        <span class="div-tag">
-          <span class="nomal-tag">
-            <%= link_to tag.tag_name, search_tag_admin_items_path(tag_id: tag.id) %>
-          </span>
-        </span>
-      <% end %>
-
-      <% end %>
+      </div>
     </div>
+                <% end %>
   </div>
 
 </div>

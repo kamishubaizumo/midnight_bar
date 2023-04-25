@@ -26,8 +26,22 @@ h2 {
 }
 
 body {
-  background: #397;
-  // background: #000;
+  // background: #397;
+  background: #000;
+}
+
+.card-bg {
+  background: #404040;
+
+}
+
+.card-color {
+  color: #eee;
+}
+
+.card-tag {
+  height: 20rem;
+  padding-top: 2em;
 }
 
 
@@ -49,7 +63,7 @@ body {
 
 .right-menu {
 
-  margin: 100px 0;
+  margin: 30% 0;
   padding: 0 7px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
