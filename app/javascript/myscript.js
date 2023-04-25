@@ -135,6 +135,15 @@ jQuery(document).on("turbolinks:load", function () {
   }
 
 
+  // TOPへ戻る
+  $(document).ready(function () {
+    $('#top-apper').click(function () {
+      $('html, body').animate({ scrollTop: 0 }, 800);
+      return false;
+    });
+  });
+
+
 
 
 

@@ -77,8 +77,12 @@ class Admin::ItemsController < ApplicationController
    #検索結果画面でもタグ一覧表示
     @tag_list = Tag.order(tag_name: :asc)
       #検索されたタグを受け取る
+
+
+      # URLをadmin/items/search_tagにするとエラーが起こる。この例外処理はどうすればいいか・・・。
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
+    
 
     @items = @tag.items.where(params[:id])
   end
