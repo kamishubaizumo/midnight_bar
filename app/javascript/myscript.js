@@ -136,14 +136,18 @@ jQuery(document).on("turbolinks:load", function () {
 
 
   // TOPへ戻る
-  $(document).ready(function () {
-    $('#top-apper').click(function () {
-      $('html, body').animate({ scrollTop: 0 }, 800);
-      return false;
-    });
+  $("#top-upper").on("click", function () {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   });
 
 
+
+  // セレクトボックスの値を入力フィールドに反映。
+  $(function () {
+    $('#stock-select').change(function () {
+      $('#item_stock').val($(this).val());
+    });
+  });
 
 
 

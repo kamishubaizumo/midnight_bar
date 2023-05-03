@@ -1,5 +1,6 @@
 * {
   list-style: none;
+
 }
 
 
@@ -7,6 +8,14 @@
 
 a {
   text-decoration: none !important;
+}
+
+.rem-font {
+  font-size: 1.1rem;
+}
+
+.yen-mark {
+  font-size: 1.4rem;
 }
 
 .admin-nav a {
@@ -17,9 +26,17 @@ a {
   color: rgb(255, 255, 255);
 }
 
-h2 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.white-text {
   color: #fff;
 }
+
+
 
 .note-text {
   color: #f00;
@@ -40,7 +57,8 @@ body {
 }
 
 .card-tag {
-  height: 20rem;
+  min-height: 10rem;
+  max-height: auto;
   padding-top: 2em;
 }
 
@@ -77,10 +95,12 @@ body {
 
 
 
+
+
 // 管理者側のタグ
 
 .div-tag {
-  margin: 10px;
+  margin: 10px 7px;
   // インラインブロックにしないと、タグの中身が改行されてしまう
   display: inline-block;
 
@@ -117,6 +137,7 @@ body {
 
 .tag-count {
   margin: 5px 2px 5px 0;
+  color: #fff;
 }
 
 

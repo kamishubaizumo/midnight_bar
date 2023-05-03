@@ -1,55 +1,10 @@
 class Admin::ItemsController < ApplicationController
 
-  # def index
-  #    if params[:genre_id].blank?
-  #     @novels = Novel.where(novel_status: "novel_public").page(params[:page]).per(20)
-  #     @genres = Genre.all
-  #     @index = "Novel"
-  #     if params[:sort_order].present?
-  #       case params[:sort_order]
-  #         when "new"
-  #           @novels = Novel.latest.where(novel_status: "novel_public").page(params[:page]).per(20)
-  #         when "old"
-  #           @novels = Novel.old.where(novel_status: "novel_public").page(params[:page]).per(20)
-  #         when "comment_count"
-  #           @novels = Kaminari.paginate_array(Novel.where(novel_status: "novel_public")
-  #           .includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}).page(params[:page]).per(20)
-  #       end
-  #     end
-  #    else
-  #       @genre = Genre.find(params[:genre_id])
-  #       @novels = @genre.novels.where(novel_status: "novel_public")
-  #       @novels_all = @genre.novels.count
-  #       @genres = Genre.all
-  #       @index = @genre.genre
-  #       if params[:sort_order].present?
-  #         case params[:sort_order]
-  #           when "new"
-  #             @novels = @novels.latest
-  #             @novels = @novels
-  #           when "old"
-  #             @novels = @novels.old
-  #             @novels = @novels
-  #           when "comment_count"
-  #             @novels = @novels.includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}
-  #             @novels = Kaminari.paginate_array(@novels)
-  #         end
-  #       end
-  #         @novels = @novels.page(params[:page]).per(20)
-  #    end
-  # end
-
-
-
-
-
   def index
 
        #検索結果画面でもタグ一覧表示
        @tag_list = Tag.order(tag_name: :asc)
        #検索されたタグを受け取る
- 
-
 
     if params[:tag_id].blank?
     @items = Item.all.order(created_at: :asc)
@@ -61,15 +16,19 @@ class Admin::ItemsController < ApplicationController
       @items = @tag.items.order(created_at: :asc)
     end
 
-
-
-    
+    @items = @items.page(params[:page]).per(20)
   end
 
   def new
     @item = Item.new
     @tag = Tag.new
     @tag_list = Tag.order(:tag_name)
+  
+    if params[:item] && params[:item][:stock].present?
+      @item.stock = params[:item][:stock]
+    elsif params[:stock_id].present?
+      @item.stock = params[:stock_id]
+    end
   end
 
   # # 商品確認画面
@@ -85,7 +44,14 @@ class Admin::ItemsController < ApplicationController
   # end
 
   def create
+
+    # 在庫は手入力を優先して保存
     @item = Item.new(item_params)
+    if params[:item][:stock].present?
+      @item.stock = params[:item][:stock]
+    elsif params[:item][:stock_id].present?
+      @item.stock = params[:item][:stock_id]
+    end
 
     #この記述はセキュリティ上問題がある。private以下に設定してあるため必要ない。
     # @item.item_name = params[:item][:item_name]
@@ -132,17 +98,7 @@ class Admin::ItemsController < ApplicationController
 
   end
 
-  def search_tag
-   #検索結果画面でもタグ一覧表示
-    @tag_list = Tag.order(tag_name: :asc)
-      #検索されたタグを受け取る
 
-      # URLをadmin/items/search_tagにするとエラーが起こる。この例外処理はどうすればいいか・・・。
-    @tag = Tag.find(params[:tag_id])
-    #検索されたタグに紐づく投稿を表示
-    
-    @items = @tag.items.where(params[:id])
-  end
 
   private
   

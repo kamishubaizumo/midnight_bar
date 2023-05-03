@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
    <div class="text-center my-4">
    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品追加", new_admin_item_path %> | <%= link_to "タグ一覧", admin_tags_path %></p>
   </div>
@@ -13,8 +12,7 @@
       <div class="right-menu">商品一覧</div>
     <% end %>
     <a class="button-link"><div id="modal-open" class="right-menu">タグ検索</div></a>
-   
-    <a href="#"><div id="top-upper" class="right-menu">TOPへ</div></a>
+    <a href=""><div id="top-upper" class="right-menu">TOPへ</div></a>
   </div>
 
   <!--タグ一覧はモーダルウィンドウで表示する-->
@@ -40,20 +38,21 @@
   <div class="row">
 
   <% @items.each do |item| %>
-    <div class="col-md-3 my-3">
+    <div class="col-sm-3 my-3">
       <div class="card card-bg">
-          <%= link_to admin_item_path(item) do %>
-            <% if item.image.attached? %>
-              <%= image_tag item.image, size: "auto", class: "w-100" %>
-            <% else %>
-              <%= image_tag 'no-image', size: "auto", class: "w-100" %>
-            <% end %>
-             
+        <%= link_to admin_item_path(item) do %>
+
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size:"auto", class: "w-100" %>
+          <% else %>
+            <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+          <% end %>
           <div class="card-body">
             <h4 class="card-title"><%= item.item_name %></h4>
-                  <% end %>
-                  <p class="card-text card-color pt-2"><%= item.item_text %></p>
-                <ul class="list-group card-color">
+        <% end %>
+
+              <p class="card-text card-color rem-font pt-2"><%= item.item_text %></p>
+                <ul class="list-group card-color rem-font">
                   <li class="list-group">在庫数:<%= item.stock %></li>
                   <li class="list-group">販売ステータス:<%= item.sale_status %></li>
                   <li class="list-group">税抜き価格:&yen;<%= item.no_tax_price %></li>
@@ -72,6 +71,8 @@
       </div>
     </div>
   <% end %>
+
+  <%= paginate @items %>
   </div>
 
 </div>
