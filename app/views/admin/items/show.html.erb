@@ -1,2 +1,27 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-center my-5">
+    <div class="col-sm-2">
+          <% if @item.image.attached? %>
+            <%= image_tag @item.image, size:"auto", class: "w-100"%>
+          <% else %>
+            <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+          <% end %>
+
+    </div>
+    <div class="col col-sm-6 text-center">
+      <h2><%= @item.item_name %></h2>
+      <div class="col-sm-8 white-text bg-item-text">商品説明
+      <br>
+        <%= h(@item.item_text).gsub(/\r|\r\n/, "<br>").html_safe %></div>
+      <div class="col-sm-3 white-text">在庫数:<%= @item.stock %></div>
+      <div class="col-sm-3 white-text">税込価格:<%= @item.on_tax_price %></div>
+      <div class="col-sm-3 white-text">税抜価格:<%= @item.no_tax_price %></div>
+      <div class="col-sm-4 white-text">販売ステータス<%= @item.sale_status %></div>
+    </div>
+  </div>
+    <div class="row">
+      <%= render "item_tags", item: @item  %> 
+    </div>
+
+  <div class="col"><%= link_to "商品の編集", edit_admin_item_path(@item), class: "btn btn-primary" %></div>
+</div>

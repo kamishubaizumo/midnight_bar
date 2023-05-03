@@ -83,10 +83,12 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @item_tags = @item.tags
+    @tags = @item.tags
   end
 
   def edit
+    @item = Item.find(params[:id])
+
   end
 
   def update

@@ -39,13 +39,19 @@
                 <%= f.select :sale_status,[["販売中",0],["販売停止中",1],["入荷待ち",2]] %>
               </div>
               <div class="col-sm-auto d-flex my-4">
+
                   <h4><%= f.label :stock, "在庫数:" %></h4>
-                    <%= f.text_field :stock, class: "form-control" %>
-                    <select id="stock-select">
+                  <div class="col col-2">
+                    <select id="stock-select" class="form-control">
                       <% (1..99).each do |i| %>
                         <option value="<%= i %>"><%= i %></option>
                       <% end %>
                     </select>
+                  </div>
+                  <div class="col col-4">
+                    <%= f.text_field :stock, value: 1,class: "form-control" %>
+                  </div>
+                                <small class="note-text">手入力で入力できます</small>
               </div>
 
 
@@ -53,7 +59,7 @@
 
 
                 
-              </div>
+   
               <div class="col-sm-auto text-center my-4">
               <h4>タグの追加:</h4>
                 <%= f.text_field :tag_name, placeholder: "タグを複数つけるには空白で区切ってください",class: "form-control" %>
