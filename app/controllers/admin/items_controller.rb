@@ -1,7 +1,66 @@
 class Admin::ItemsController < ApplicationController
+
+  # def index
+  #    if params[:genre_id].blank?
+  #     @novels = Novel.where(novel_status: "novel_public").page(params[:page]).per(20)
+  #     @genres = Genre.all
+  #     @index = "Novel"
+  #     if params[:sort_order].present?
+  #       case params[:sort_order]
+  #         when "new"
+  #           @novels = Novel.latest.where(novel_status: "novel_public").page(params[:page]).per(20)
+  #         when "old"
+  #           @novels = Novel.old.where(novel_status: "novel_public").page(params[:page]).per(20)
+  #         when "comment_count"
+  #           @novels = Kaminari.paginate_array(Novel.where(novel_status: "novel_public")
+  #           .includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}).page(params[:page]).per(20)
+  #       end
+  #     end
+  #    else
+  #       @genre = Genre.find(params[:genre_id])
+  #       @novels = @genre.novels.where(novel_status: "novel_public")
+  #       @novels_all = @genre.novels.count
+  #       @genres = Genre.all
+  #       @index = @genre.genre
+  #       if params[:sort_order].present?
+  #         case params[:sort_order]
+  #           when "new"
+  #             @novels = @novels.latest
+  #             @novels = @novels
+  #           when "old"
+  #             @novels = @novels.old
+  #             @novels = @novels
+  #           when "comment_count"
+  #             @novels = @novels.includes(:reviews).sort {|a,b| b.reviews.count <=> a.reviews.count}
+  #             @novels = Kaminari.paginate_array(@novels)
+  #         end
+  #       end
+  #         @novels = @novels.page(params[:page]).per(20)
+  #    end
+  # end
+
+
+
+
+
   def index
-    @items = Item.all
-    @tag_list = Tag.order(:tag_name)
+
+       #検索結果画面でもタグ一覧表示
+       @tag_list = Tag.order(tag_name: :asc)
+       #検索されたタグを受け取る
+ 
+
+
+    if params[:tag_id].blank?
+    @items = Item.all.order(created_at: :asc)
+    @index = "商品"
+    else
+
+      @tag = Tag.find(params[:tag_id])
+      @index = @tag.tag_name
+      @items = @tag.items.order(created_at: :asc)
+    end
+
 
 
     
@@ -78,12 +137,10 @@ class Admin::ItemsController < ApplicationController
     @tag_list = Tag.order(tag_name: :asc)
       #検索されたタグを受け取る
 
-
       # URLをadmin/items/search_tagにするとエラーが起こる。この例外処理はどうすればいいか・・・。
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
     
-
     @items = @tag.items.where(params[:id])
   end
 
