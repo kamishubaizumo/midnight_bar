@@ -26,9 +26,8 @@ class Admin::ItemsController < ApplicationController
   
     if params[:item] && params[:item][:stock].present?
       @item.stock = params[:item][:stock]
-    elsif params[:stock_id].present?
-      @item.stock = params[:stock_id]
     end
+
   end
 
   # # 商品確認画面
@@ -49,8 +48,8 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if params[:item][:stock].present?
       @item.stock = params[:item][:stock]
-    elsif params[:item][:stock_id].present?
-      @item.stock = params[:item][:stock_id]
+    elsif params[:item][:stock].present?
+      @item.stock = params[:item][:stock]
     end
 
     #この記述はセキュリティ上問題がある。private以下に設定してあるため必要ない。
@@ -84,14 +83,40 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @tags = @item.tags
+    @tag_list = Tag.order(tag_name: :asc)
   end
 
   def edit
     @item = Item.find(params[:id])
 
+    # タグの編集。&は、tags.map {|tag| tag.tag_name}と同じ処理。
+    tag_names = @item.tags.map(&:tag_name).join(" ")
+    @tag_names = tag_names
+
+    @tag_list = Tag.order(:tag_name)
+  
+    if params[:item] && params[:item][:stock].present?
+      @item.stock = params[:item][:stock]
+    end
+
   end
 
   def update
+    @item = Item.find(params[:id])
+       # 在庫は手入力を優先して保存
+       @item.update(item_params)
+       if params[:item][:stock].present?
+         @item.stock = params[:item][:stock]
+       end
+       tag_list = params[:item][:tag_name].split(" ")
+   
+       #タグを保存
+       if @item.save!
+         @item.save_tag(tag_list)
+         redirect_to admin_items_path
+       else
+         redirect_to new_admin_item_path
+       end
     
   end
 

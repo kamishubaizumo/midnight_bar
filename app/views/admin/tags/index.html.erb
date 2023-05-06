@@ -1,8 +1,6 @@
 <div class="container-fluid">
 
-  <div class="text-center my-5">
-    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品一覧", admin_items_path %></p>
-  </div>
+  <%= render "admin/shared/admin_nav" %>
 
   <div class="text-center my-5">
     <h2>タグの追加と一覧</h2>

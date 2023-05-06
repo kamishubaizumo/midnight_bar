@@ -1,6 +1,16 @@
 <div class="container-fluid">
+
+  <div class="text-center my-4">
+    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品追加", new_admin_item_path %></p>
+  
+  </div>
+
   <div class="row justify-content-center my-5">
-    <div class="col-sm-2">
+
+      <%= render "admin/shared/menu", tag_list: @tag_list %>
+
+
+    <div class="col-sm-2 my-3 mx-2">
           <% if @item.image.attached? %>
             <%= image_tag @item.image, size:"auto", class: "w-100"%>
           <% else %>
@@ -8,8 +18,8 @@
           <% end %>
 
     </div>
-    <div class="col col-sm-6 text-center">
-      <h2><%= @item.item_name %></h2>
+    <div class="col col-sm-6 text-center my-3 mx-2">
+      <h3 class="bg-item-text"><%= @item.item_name %></h3>
       <div class="col-sm-8 white-text bg-item-text">商品説明
       <br>
         <%= h(@item.item_text).gsub(/\r|\r\n/, "<br>").html_safe %></div>

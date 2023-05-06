@@ -1,0 +1,79 @@
+<div class="container-fluid">
+ 
+  <%= render "admin/shared/admin_nav" %>
+
+  <div class="text-center my-5"><h2>商品情報編集</h2></div>
+
+
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @item, method: :patch, url: admin_item_path(@item) do |f| %>
+        <div class="row justify-content-center">
+          <div class="col col-sm-6 text-center">
+            <div class="col-sm-auto my-4">
+              <h4><%= f.label :image,"商品画像:" %></h4>
+                <%= f.file_field :image, accept: "image/*"%>
+            </div>
+            <div class="col-sm-auto my-4">
+              <h4><%= f.label :item_name, "商品名:" %></h4>
+                <%= f.text_field :item_name, class: "form-control" %>
+            </div>
+            <div class="col-sm-auto my-4">
+              <h4><%= f.label :item_text, "商品説明" %>:</h4>
+                <%= f.text_area :item_text,placeholder: "キャッチコピー・製造元・製造年月・賞味期限など",size:"100x5", class: "form-control" %>
+            </div>
+          </div>
+          
+
+
+
+          <div class="col col-sm-6">
+
+            <div class="col-sm-auto d-flex my-4">
+              <h4><%= f.label :no_tax_price, "税抜き価格:" %></h4>
+                <span class="white-text yen-mark">&yen;</span>
+                <div class="col-sm-6">
+                <%= f.text_field :no_tax_price, class:"form-control" %>
+                </div>
+             </div>
+             <div class="col-sm-auto d-flex my-4">
+              <h4><%= f.label :sale_status, "販売ステータス:" %></h4>
+                <%= f.select :sale_status,[["販売中",0],["販売停止中",1],["入荷待ち",2]] ,selected:@item.sale_status %>
+              </div>
+              <div class="col-sm-auto d-flex my-4">
+
+                  <h4><%= f.label :stock, "在庫数:" %></h4>
+                  <div class="col col-2">
+  <%= f.select :stock, (1..99), {}, {class: 'form-control', id: 'stock-select'} %>
+                  </div>
+                  <div class="col col-4">
+                    <%= f.text_field :stock,class: "form-control" %>
+                  </div>
+                                <small class="note-text">手入力で入力できます</small>
+              </div>
+
+
+
+
+
+                
+   
+              <div class="col-sm-auto text-center my-4">
+              <h4>タグの編集:</h4>
+                <%= f.text_field :tag_name,value: @tag_names, placeholder: "タグを複数つけるには空白で区切ってください",class: "form-control" %>
+            
+                <button id="clear-button" class="btn btn-secondary" style="width: 100%;" type="button">クリア</button>
+                </div>
+                <div class="text-center my-5">
+                  <%= f.submit "商品更新",class: "btn btn-success" %>
+                </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+            <!--確認画面から戻るとエラーが出る-->
+            <%= render "add_tag", tag_list: @tag_list %>
+  </div>
+</div>

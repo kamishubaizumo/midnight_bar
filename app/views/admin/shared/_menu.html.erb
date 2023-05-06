@@ -1,0 +1,26 @@
+  <div id="position-right">
+    <%= link_to admin_items_path do %>
+      <div class="right-menu">商品一覧</div>
+    <% end %>
+    <a class="button-link"><div id="modal-open" class="right-menu">タグ検索</div></a>
+    <a href=""><div id="top-upper" class="right-menu">TOPへ</div></a>
+  </div>
+
+    <!--タグ一覧はモーダルウィンドウで表示する-->
+  <div id="modal-tag">
+    <p id="modal-close"><a class="button-link py-3">閉じる</a></p>
+  
+
+    <div class="col">
+      <% tag_list.each do |tag_list| %>
+        <span class="div-tag">
+          <span class="nomal-tag">
+            <%= link_to tag_list.tag_name, admin_items_path(tag_id: tag_list.id) %>
+          </span>
+          <span class="tag-count">
+            <%= "(#{tag_list.items.count})" %>
+          </span>
+        </span>
+      <% end %>
+    </div>
+  </div>

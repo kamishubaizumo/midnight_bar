@@ -1,0 +1,14 @@
+<div class="text-center my-5">
+   <!-- items/index -->
+  <% if current_page?(admin_items_path) %>
+    <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品追加", new_admin_item_path %> | <%= link_to "タグ一覧", admin_tags_path %></p>
+  <% end %>
+  
+  <!-- items/new -->
+  <% if current_page?(new_admin_item_path) || current_page?(admin_tags_path) %>
+   <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品一覧", admin_items_path %></p>
+  <% end %>
+
+
+
+</div>
