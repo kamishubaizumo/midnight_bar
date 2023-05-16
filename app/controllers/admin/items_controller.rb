@@ -111,16 +111,20 @@ class Admin::ItemsController < ApplicationController
        tag_list = params[:item][:tag_name].split(" ")
    
        #タグを保存
-       if @item.save!
+       if @item.save
          @item.save_tag(tag_list)
-         redirect_to admin_items_path
+         redirect_to admin_item_path
        else
-         redirect_to new_admin_item_path
+         redirect_to edit_admin_item_path
+         flash[:notice] = "更新に失敗しました"
        end
     
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to admin_items_path
 
 
   end

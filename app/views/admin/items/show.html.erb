@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="text-center my-4">
+  <div class="text-center my-5">
     <p class="admin-nav"><%= link_to "管理者ホーム", admin_root_path %> | <%= link_to "商品追加", new_admin_item_path %></p>
   
   </div>
@@ -18,20 +18,48 @@
           <% end %>
 
     </div>
-    <div class="col col-sm-6 text-center my-3 mx-2">
-      <h3 class="bg-item-text"><%= @item.item_name %></h3>
-      <div class="col-sm-8 white-text bg-item-text">商品説明
-      <br>
-        <%= h(@item.item_text).gsub(/\r|\r\n/, "<br>").html_safe %></div>
-      <div class="col-sm-3 white-text">在庫数:<%= @item.stock %></div>
-      <div class="col-sm-3 white-text">税込価格:<%= @item.on_tax_price %></div>
-      <div class="col-sm-3 white-text">税抜価格:<%= @item.no_tax_price %></div>
-      <div class="col-sm-4 white-text">販売ステータス<%= @item.sale_status %></div>
-    </div>
-  </div>
-    <div class="col">
-      <%= render "item_tags", item: @item  %> 
+
+    <div class="col col-sm-6 my-3 mx-2">
+      <h2 class="col bg-item-text text-center"><%= @item.item_name %></h2>
+      <div class="col-sm-12 white-text bg-item-text mt-4"><span>商品説明</span>
+        <div class="mx-3 my-2">
+          <%= h(@item.item_text).gsub(/\r|\r\n/, "<br>").html_safe%>
+        </div>
+      </div>
+
+      
+      <div class="row row-cols-2 text-center my-5 mx-1 white-text">
+        <div class="col">
+        <h4 class="bg-item-text">販売価格</h4>
+          <p class="">&yen;<%= @item.on_tax_price %>(税込)</p>
+          </div>
+        <div class="col">
+        <h4 class="bg-item-text">税抜価格</h4>
+          <p class="">&yen;<%= @item.no_tax_price %></p>
+          </div>
+      </div>
     </div>
 
-  <div class="col"><%= link_to "商品の編集", edit_admin_item_path(@item), class: "btn btn-primary" %></div>
+    <div class="col-sm-8">
+      <div class="row row-cols-2 text-center mx-1 white-text">
+        <div class="col">
+          <h4 class="bg-item-text">在庫数</h4>
+            <p class=""><%= @item.stock %></p>
+          </div>
+          <div class="col">
+          <h4 class="bg-item-text">販売ステータス</h4>
+            <p class=""><%= @item.sale_status %></p>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-7 text-center">
+      <%= render "item_tags", item: @item %> 
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-5 my-3 text-right"><%= link_to "商品一覧", admin_items_path, class: "btn btn-secondary" %></div>
+    <div class="col-5 my-3 text-left"><%= link_to "商品の編集", edit_admin_item_path(@item), class: "btn btn-primary" %></div>
+  </div>
 </div>
