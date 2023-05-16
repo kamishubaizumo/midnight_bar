@@ -13,18 +13,13 @@ Rails.application.routes.draw do
 
       resources :customers
       resources :items
-      #  do
-      #   collection do 
-      #         #タグで検索
-      #     get "search_tag" => "items#search_tag"
-      #   end
-      # end
+
         
         # 確認画面作成中断
-        #   member do
-        #     post "confirm"
-        #     patch 'edit_confirm'
-        #   end
+          # collection do
+          #   post "confirm"
+          #   # patch 'edit_confirm'
+          # end
       resources :tags
       resources :contacts
       resources :orders
