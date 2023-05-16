@@ -1,4 +1,13 @@
 ja:
+  enums:
+    item:
+      sale_status:
+        onSale: 販売中
+        stopSale: 販売停止
+        backOrdered: 入荷待ち
+        soldOut: 売り切れ
+    
+  
   activerecord:
     errors:
       messages:

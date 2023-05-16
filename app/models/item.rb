@@ -42,5 +42,14 @@ class Item < ApplicationRecord
   (self.no_tax_price * tax_rate).floor
   end
 
+  enum sale_status: {onSale: 0, stopSale: 1, backOrdered: 2, soldOut: 3}
+
+  def out_of_stock
+    if self.item.stock == 0
+      self.update(sale_status: :soldOut)
+    end
+  end
+
+  
 
 end

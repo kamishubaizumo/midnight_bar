@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-auto my-4">
               <h4><%= f.label :item_text, "商品説明" %>:</h4>
-                <%= f.text_area :item_text,autofocus: true,placeholder: "発送日・キャッチコピー・製造元・製造年月・賞味期限など",size:"100x5", class: "form-control" %>
+                <%= f.text_area :item_text,autofocus: true,placeholder: "発送日・キャッチコピー・製造元・製造年月など",size:"100x5", class: "form-control" %>
             </div>
           </div>
           
@@ -69,8 +69,15 @@
             
                 <button id="clear-button" class="btn btn-secondary" style="width: 100%;" type="button">クリア</button>
                 </div>
-                <div class="text-center my-5">
-                  <%= f.submit "商品追加",class: "btn btn-primary" %>
+
+                <div class="row row-cols-2">
+                <div class="col text-center my-5">
+                  <%= f.submit "商品追加",class: "btn btn-primary px-5" %>
+                </div>
+                <div class="col text-center my-5">
+                  <%= link_to "戻る", admin_items_path, class:"btn btn-secondary px-5" %>
+                </div>
+
                 </div>
           </div>
         </div>
