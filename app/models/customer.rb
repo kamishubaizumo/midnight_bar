@@ -17,6 +17,14 @@ class Customer < ApplicationRecord
     validates :tel_number, presence: true
 
     
+  def customer_name
+    last_name + " " + first_name
+  end
+
+  def customer_name_kana
+    last_name_kana + " " + first_name_kana
+  end
+
 
 
   # jpostal.jsで使うメソッド。郵便番号を入力で、住所自動入力
