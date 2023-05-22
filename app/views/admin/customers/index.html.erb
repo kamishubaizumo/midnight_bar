@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-5">
 
   <%= render "admin/shared/admin_nav" %>
 
@@ -8,18 +8,19 @@
     <h2>会員一覧</h2>
   </div>
 
-<div class="table-responsive-sm">
-    <table class="table white-text">
-      <thead>
+
+
+  <div class="table-responsive my-5">
+    <table class="table white-text text-nowrap">
+      <thead class="text-center">
         <tr>
-          <th scope="col-1"  class="text-center">会員ID</th>
-          <th scope="col-2">会員名</th>
-          <th scope="col-2">連絡先</th>
-          <th scope="col-3">住所</th>
-          <th scope="col-1"  class="text-center">状態</th>
+          <th scope="col" class="text-center" style="width:10%">会員ID</th>
+          <th scope="col" style="width:20%">会員名</th>
+          <th scope="col" style="width:30%">連絡先</th>
+          <th scope="col" style="width:30%">住所</th>
+          <th scope="col" class="text-center" style="width:10%">状態</th>
         </tr>
       </thead>
-
 
     <% @customers.each do |customer| %>
 
@@ -28,36 +29,26 @@
           <th scope="row" class="text-center"><%= customer.id %></th>
           <td>
             <div class="col">
-              <div class="col"><%= customer.customer_name_kana %></div>
-              <div class="col"><%= customer.customer_name %></div>
+              <div class="col"><p><small><%= customer.customer_name_kana %></small></p></div>
+              <div class="col"><p><%= customer.customer_name %></p></div>
             </div>
-          </td>
-          <td>
-            <div class="col"><%= customer.email %></div>
-            <div class="col"><%= customer.tel_number %></div>
           </td>
           <td>
             <div class="col">
-              <div class="col"><%= customer.join_address %></div>
-              <div class="col"><%= customer.address_other %></div>
+              <div class="col"><p><small>【Eメール】</small><%= customer.email %></p></div>
+              <div class="col"><p><small>【電話番号】</small><%= customer.tel_number %></p></div>
             </div>
           </td>
-        </div>
-      
-
-      
-     
-
-      
-      
-      
-      <%= customer.age %>
-      <%= customer.is_deleted %>
+          <td>
+            <div class="col">
+              <div class="col"><p><small>【住所1】</small><%= customer.join_address %></p></div>
+              <div class="col"><p><small>【住所2】</small><%= customer.address_other %></p></div>
+            </div>
+          </td>
+          <td class="text-center"><p><%= customer.is_deleted %></p></td>    
         </tr>
       </tbody>
     <% end %>
-      </table>
+    </table>
   </div>
-
-  
 </div>

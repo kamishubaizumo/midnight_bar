@@ -46,7 +46,7 @@ class Customer < ApplicationRecord
 
   # 個別の住所をまとめて表示させる。
   def join_address
-    "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_other}"
+    "#{self.prefecture_name}#{self.address_city}#{self.address_street}"
   end
 
   #生年月日から、年齢を計算する
