@@ -1,4 +1,4 @@
-< class="container-fluid">
+<div class="container-fluid">
 
   <%= render "admin/shared/admin_nav" %>
 
@@ -8,21 +8,56 @@
     <h2>会員一覧</h2>
   </div>
 
+<div class="table-responsive-sm">
+    <table class="table white-text">
+      <thead>
+        <tr>
+          <th scope="col-1"  class="text-center">会員ID</th>
+          <th scope="col-2">会員名</th>
+          <th scope="col-2">連絡先</th>
+          <th scope="col-3">住所</th>
+          <th scope="col-1"  class="text-center">状態</th>
+        </tr>
+      </thead>
+
+
     <% @customers.each do |customer| %>
 
-      <%= customer.id %>
+      <tbody>
+        <tr>    
+          <th scope="row" class="text-center"><%= customer.id %></th>
+          <td>
+            <div class="col">
+              <div class="col"><%= customer.customer_name_kana %></div>
+              <div class="col"><%= customer.customer_name %></div>
+            </div>
+          </td>
+          <td>
+            <div class="col"><%= customer.email %></div>
+            <div class="col"><%= customer.tel_number %></div>
+          </td>
+          <td>
+            <div class="col">
+              <div class="col"><%= customer.join_address %></div>
+              <div class="col"><%= customer.address_other %></div>
+            </div>
+          </td>
+        </div>
+      
 
-      <%= customer.customer_name %>
-      <%= customer.customer_name_kana %>
+      
+     
 
-      <%= customer.email %>
-      <%= customer.join_address %>
+      
+      
+      
       <%= customer.age %>
       <%= customer.is_deleted %>
-
+        </tr>
+      </tbody>
     <% end %>
-  
-
+      </table>
+  </div>
 
   
 </div>
