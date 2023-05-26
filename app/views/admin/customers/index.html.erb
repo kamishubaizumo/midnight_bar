@@ -30,7 +30,11 @@
           <td>
             <div class="col">
               <div class="col"><p><small><%= customer.customer_name_kana %></small></p></div>
-              <div class="col"><p><%= customer.customer_name %></p></div>
+              <div class="col">
+                <%= link_to admin_customer_path(customer.id) do %>
+                  <p><%= customer.customer_name %></p>
+                <% end %>
+              </div>
             </div>
           </td>
           <td>

@@ -1,13 +1,12 @@
 class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.all
-
     @tag_list = Tag.all
   end
 
   def show
     @customer = Customer.find(params[:id])
-    
+    @tag_list = Tag.all
 
   end
 
