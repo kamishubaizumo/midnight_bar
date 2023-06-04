@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
       if resource_or_scope.is_a?(Admin)
         admin_root_path
       else
-        root_path
+        items_path
       end
     end
 
     def after_signin_out_path_for(resource_or_scope)
-      if resource_or_scope == :users
+      if resource_or_scope == :customer
         root_path
       elsif resource_or_scope == :admin
         new_admin_session_path

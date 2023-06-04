@@ -1,2 +1,74 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container-fluid">
+
+  <div class="row justify-content-center my-5">
+
+      <%= render "public/shared/menu", tag_list: @tag_list %>
+
+
+    <div class="col-sm-2 my-3 mx-2">
+          <% if @item.image.attached? %>
+            <%= image_tag @item.image, size:"auto", class: "w-100"%>
+          <% else %>
+            <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+          <% end %>
+
+    </div>
+
+    <div class="col col-sm-6 my-3 mx-2">
+      <h2 class="col bg-item-text text-center"><%= @item.item_name %></h2>
+      <div class="col-sm-12 white-text bg-item-text mt-4"><span>商品説明</span>
+        <div class="mx-3 my-2">
+          <%= h(@item.item_text).gsub(/\r|\r\n/, "<br>").html_safe%>
+        </div>
+      </div>
+
+      
+      <div class="row row-cols-2 text-center my-4 mx-1 white-text">
+        <div class="col">
+        <h4 class="bg-item-text">販売価格</h4>
+          <p class="">&yen;<%= @item.on_tax_price %>(税込)</p>
+          </div>
+        <div class="col">
+        <h4 class="bg-item-text">税抜価格</h4>
+          <p class="">&yen;<%= @item.no_tax_price %></p>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="row row-cols-2 text-center mx-1 white-text">
+        <div class="col">
+          <h4 class="bg-item-text">在庫数</h4>
+            <p class=""><%= @item.stock %></p>
+          </div>
+          <div class="col">
+          <h4 class="bg-item-text">販売ステータス</h4>
+            <p class=""><%= @item.sale_status_i18n %></p>
+          </div>
+      </div>
+            <div class="row row-cols-2 text-center mx-1 white-text">
+        <div class="col">
+          <h4 class="bg-item-text">お気に入り</h4>
+ 
+          </div>
+          <div class="col">
+          <h4 class="bg-item-text">カートに入れる</h4>
+          <% if @item.sale_status == "onSale" %>
+            カートに入れる
+          <% else %>
+            在庫がありません
+          <% end %>
+    
+          </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-7 text-center">
+      <%= render "item_tags", item: @item %> 
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 my-3 text-center"><%= link_to "商品一覧に戻る", items_path, class: "btn btn-secondary w-100" %></div>
+  </div>
+</div>

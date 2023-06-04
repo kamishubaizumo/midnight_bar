@@ -1,2 +1,57 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container-fluid">
+
+
+  <!--画面右に固定する-->
+  <%= render "public/shared/menu", tag_list: @tag_list %>
+
+
+
+  <div class="text-center my-5">
+    <h2><%= @index %>一覧</h2>
+  </div>
+  
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-sm-3 my-3">
+        <div class="card card-bg">
+          <%= link_to item_path(item) do %>
+
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size:"auto", class: "w-100" %>
+            <% else %>
+              <%= image_tag 'no-image', size: "auto", class: "w-100" %>
+            <% end %>
+            <div class="card-body">
+              <h4 class="card-title"><%= item.item_name %></h4>
+          <% end %>
+
+                <p class="card-text card-color rem-font pt-2"><%#= item.item_text %>☆5平均評価とレビュー数(数)</p>
+                  <ul class="list-group card-color rem-font">
+                    <li class="list-group">在庫数:
+                    <% if item.stock > 10 %>
+                      <%= item.stock %></li>
+                    <% elsif item.stock > 1 %>
+                      <%= item.stock %></li>残りわずか
+                    <% else %>
+                      売り切れ
+                    <% end %>
+                    <li class="list-group">販売ステータス:<%= item.sale_status_i18n %></li>
+                    <li class="list-group">税抜き価格:&yen;<%= item.no_tax_price %></li>
+                    <li class="list-group">税込み価格:&yen;<%= item.on_tax_price %></li>
+                  </ul>
+
+              <%= render "item_tags", item: item  %> 
+            </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="text-center"><%= paginate @items %></div>
+    
+  </div>
+</div>
+
+
+
+
+

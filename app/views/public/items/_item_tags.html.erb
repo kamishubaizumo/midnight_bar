@@ -1,0 +1,9 @@
+            <div class="card-tag">
+              <% item.tags.each do |tag| %>
+              <span class="div-tag">
+                <span class="nomal-tag">
+                  <%= link_to tag.tag_name, items_path(tag_id: tag.id) %>
+                </span>
+              </span>
+            <% end %>
+            </div>
