@@ -36,8 +36,9 @@
              </div>
              <div class="col-sm-auto d-flex my-4">
               <h4><%= f.label :sale_status, "販売ステータス:" %></h4>
-                <%= f.select :sale_status,[["販売中",0],["販売停止中",1],["入荷待ち",2]] ,selected:@item.sale_status %>
+                <%= f.select :sale_status,[["販売中","onSale"],["販売停止中","stopSale"],["入荷待ち","backOrdered"]] ,selected:@item.sale_status %>
               </div>
+
               <div class="col-sm-auto d-flex my-4">
 
                   <h4><%= f.label :stock, "在庫数:" %></h4>

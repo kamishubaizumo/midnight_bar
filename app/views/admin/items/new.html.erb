@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-auto my-4">
               <h4><%= f.label :item_text, "商品説明" %>:</h4>
-                <%= f.text_area :item_text,autofocus: true,placeholder: "発送日・キャッチコピー・製造元・製造年月など",size:"100x5", class: "form-control" %>
+                <%= f.text_area :item_text,autofocus: true,placeholder: "キャッチコピー・製造元・製造年月など",size:"100x5", class: "form-control" %>
             </div>
           </div>
           
@@ -38,7 +38,7 @@
              </div>
              <div class="col-sm-auto d-flex my-4">
               <h4><%= f.label :sale_status, "販売ステータス:" %></h4>
-                <%= f.select :sale_status,[["販売中",0],["販売停止中",1],["入荷待ち",2]] %>
+                <%= f.select :sale_status,[["販売中","onSale"],["販売停止中","stopSale"],["入荷待ち","backOrdered"]] %>
               </div>
               <div class="col-sm-auto d-flex my-4">
 

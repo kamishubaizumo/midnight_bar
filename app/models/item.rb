@@ -44,12 +44,12 @@ class Item < ApplicationRecord
 
   enum sale_status: {onSale: 0, stopSale: 1, backOrdered: 2, soldOut: 3}
 
+  # 在庫が0になったら、売り切れに更新
   def out_of_stock
-    if self.item.stock == 0
-      self.update(sale_status: :soldOut)
+    if self.stock <= 0
+      self.update(sale_status: "soldOut")
     end
   end
 
-  
 
 end

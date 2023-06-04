@@ -103,8 +103,10 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+
        # 在庫は手入力を優先して保存
        @item.update(item_params)
+       @item.out_of_stock
        if params[:item][:stock].present?
          @item.stock = params[:item][:stock]
        end
@@ -125,7 +127,6 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to admin_items_path
-
 
   end
 

@@ -29,7 +29,14 @@
 
                 <p class="card-text card-color rem-font pt-2"><%#= item.item_text %>☆5平均評価とレビュー数(数)</p>
                   <ul class="list-group card-color rem-font">
-                    <li class="list-group">在庫数:<%= item.stock %></li>
+                    <li class="list-group">在庫数:
+                    <% if item.stock > 10 %>
+                      <%= item.stock %></li>
+                    <% elsif item.stock > 1 %>
+                      <%= item.stock %></li>残りわずか
+                    <% else %>
+                      売り切れ
+                    <% end %>
                     <li class="list-group">販売ステータス:<%= item.sale_status_i18n %></li>
                     <li class="list-group">税抜き価格:&yen;<%= item.no_tax_price %></li>
                     <li class="list-group">税込み価格:&yen;<%= item.on_tax_price %></li>
