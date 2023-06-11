@@ -68,6 +68,21 @@ body {
 }
 
 
+.itemBtn {
+  background: rgba($color: #fff, $alpha: 0.3);
+  border-radius: 30px;
+
+}
+
+.cartIN {
+  color: #08f;
+}
+
+.favoIN {
+  color: #f0a;
+}
+
+
 /* グローバルナビのトグルメニュー */
 .menu {
   display: none;

@@ -17,15 +17,15 @@
 
 
     <!--バニーガールの画像をクリックすると、ナビが出てくる。TOPページにはでないようにしたい-->
-    <% if current_page?(home_path || customer_path ) %>
+    <% if customer_signed_in? %>
     <div class="toggle-menu">
       <%= image_tag "menu_bunnygirl.gif", size:"120x120" %>
     </div>
     <nav class="menu">
 
       <% if customer_signed_in? %>
-        <div><%= link_to "会員証を見る(マイページ)" %></div>
-        <div><%= link_to "注文票を見る(カート内)" %></div>
+        <div><%= link_to "会員証を見る(マイページ)",current_customer %></div>
+        <div><%= link_to "注文票を見る(カート内)",cart_items_path %></div>
         <div><%= link_to "サインアウト", destroy_customer_session_path,method: :delete %></div>
 
       <% else %>
@@ -37,10 +37,7 @@
     </nav>
     <% end %>
 
-    <% if admin_signed_in? %>
-      <div>link_to "会員一覧", </div>
-    <% else %>
-    <% end %>
+
 
     <div class="col text-center alert-danger">
       <%= flash[:notice] %>

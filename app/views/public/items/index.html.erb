@@ -25,7 +25,18 @@
               <h4 class="card-title"><%= item.item_name %></h4>
           <% end %>
 
-                <p class="card-text card-color rem-font pt-2"><%#= item.item_text %>☆5平均評価とレビュー数(数)</p>
+          <%# お気に入りと、カートに入れる。if文で切り替え。positionで商品画像のボトムに横並び配置 %>
+          <%# ハートと、カートのマークをネオンにしたい %>
+            <div class="row">
+              
+              <span class="col itemBtn"><i class="far fa-heart favoIN"></i>お気に入り</span>
+ 
+
+              <span class="col itemBtn"><i class="fas fa-cart-plus cartIN"></i>カートに入れる</span>
+              <%# <span class="col"><i class="fas fa-times"></i>売り切れ中</span> %>
+            </div>
+
+                <p class="card-text card-color rem-font pt-2"><%#= item.item_text %>☆5平均評価とレビュー数(数)配置</p>
                   <ul class="list-group card-color rem-font">
                     <li class="list-group">在庫数:
                     <% if item.stock > 10 %>
