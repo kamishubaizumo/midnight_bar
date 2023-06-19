@@ -15,7 +15,10 @@
  */
 
 
-
+@font-face {
+  font-family: 'Neoneon';
+  src: url('/fonts/Neoneon.otf') format('opentype');
+}
 
 .background {
   background: #ccc;
@@ -27,9 +30,14 @@
 }
 
 .my-card {
+
   background-image: image-url('wasi.jpg') !important;
   width: 100%;
 
+}
+
+.my-card-title {
+  font-family: ;
 }
 
 .my-card-header {
@@ -38,6 +46,7 @@
 
 .my-card-body h3 {
   text-align: center;
+  color: #000;
 }
 
 .my-card-content {
