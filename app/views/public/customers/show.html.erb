@@ -6,22 +6,23 @@
       <div class="my-card-body">
         <h3 class="my-card-title text-center">会員証</h3>
         <div class="my-card-content">
-          <p> 氏名: <%= @customer.last_name %>&nbsp;<%= @customer.first_name %></p>
+          <p><span class="profile">フリガナ</span><span class="tegaki"><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></span></p>
         </div>
         <div class="my-card-content">
-          <p> シメイ: <%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></p>
+          <p><span class="profile">会員名</span><span class="tegaki"><%= @customer.last_name %>&nbsp;<%= @customer.first_name %></span></p>
+        </div>
+
+        <div class="my-card-content">
+          <p><span class="profile"> 生年月日</span><span class="tegaki"><%= @customer.birth.strftime("%Y年%m月%d日") %></span>&nbsp;/&nbsp; <span class="profile">年齢</span><span class="tegaki"><%= @customer.age %></span><span class="profile">歳</span></p>
         </div>
         <div class="my-card-content">
-          <p>  生年月日: <%= @customer.birth.strftime("%Y年%m月%d日") %>&nbsp;/&nbsp; 年齢：<%= @customer.age %>歳</p>
+          <p><span class="profile">電話番号</span><span class="tegaki"><%= @customer.tel_number %></span> &nbsp;/&nbsp; <span class="profile">メールアドレス</span><span class="tegaki"><%= @customer.email %></span></p>
         </div>
         <div class="my-card-content">
-          <p> 電話番号: <%= @customer.tel_number %> &nbsp;/&nbsp; メールアドレス<%= @customer.email %></p>
+          <p><span class="profile">郵便番号</span><span class="tegaki"><%= @customer.postcode %></span></p>
         </div>
         <div class="my-card-content">
-          <p> 郵便番号: <%= @customer.postcode %></p>
-        </div>
-        <div class="my-card-content">
-          <p> 住所: <%= @customer.join_address %></p>
+          <p><span class="profile">住所</span><span class="tegaki"><%= @customer.join_address %></span></p>
         </div>
         
       </div>

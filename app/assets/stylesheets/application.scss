@@ -17,8 +17,10 @@
 
 @font-face {
   font-family: 'Neoneon';
-  src: url('/fonts/Neoneon.otf') format('opentype');
+  src: url('../fonts/Neoneon.otf') format('opentype');
 }
+
+
 
 .background {
   background: #ccc;
@@ -27,7 +29,10 @@
 
 .container {
   margin: 0 auto;
+
 }
+
+
 
 .my-card {
 
@@ -37,7 +42,8 @@
 }
 
 .my-card-title {
-  font-family: ;
+  font-family: "MS Gothic";
+  color: #6b6b6b !important;
 }
 
 .my-card-header {
