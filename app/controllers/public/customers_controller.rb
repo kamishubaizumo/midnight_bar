@@ -37,18 +37,17 @@ class Public::CustomersController < ApplicationController
 
    # permitに:email,:passwordは設定したらダメっぽい。更新するとログアウトする。
   def customer_params
-    params.require(:customer).parmit(
+    params.require(:customer).permit(
       :last_name,
       :first_name,
       :last_name_kana,
       :first_name_kana,
-      :birth,
       :postcode,
       :prefecture_code,
       :address_city,
       :address_street,
       :address_other,
-      :tel_number
+      :tel_number,
     )
   end
 

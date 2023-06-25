@@ -1,2 +1,82 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container-fluid">
+  <div class="text-center pt-5">
+    <h2>会員情報編集</h2>
+  </div>
+
+  <%= form_with model: @customer do |f| %>
+
+
+    <div class="row col-md-10 mt-2">
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :last_name_kana,"セイ" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :last_name_kana, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :first_name_kana,"メイ" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :first_name_kana, autofocus: true, class:"form-control"  %>
+      </div>
+    </div>
+
+    <div class="row col-md-10 mt-5">
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :last_name,"姓" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :last_name, autofocus: true,class:"form-control" %>
+      </div>
+
+      <div class="field col-sm-5 col-md-5 mt-2">
+        <%= f.label :first_name,"名" %><small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :first_name, autofocus: true, class:"form-control"  %>
+      </div>
+    </div>
+
+
+    <div class="row col-md-10 mt-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :tel_number, "電話番号" %><small class="text-danger">半角数字のみ入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :tel_number, autocomplete: 'tel_number', placeholder: "0001112222",class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="field col-sm-5 col-md-5 mt-3">
+      <%= f.label :email, "メールアドレス" %><small class="text-danger"><sup>※</sup>入力必須</small>
+      <%= f.email_field :email, autofocus: true,placeholder: "email@exmple.com", autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="row col-md-10 my-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :postcode,"郵便番号" %><small class="text-danger">半角数字で入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :postcode, autocomplete: 'postcode',placeholder: "000-0000", class: 'form-control' %>
+      </div>
+
+
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :prefecture_name, "都道府県" %> <small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name,
+        { include_blank: '選択してください', selected: current_customer.prefecture_code}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row col-md-10">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_city, "市区町村・町域" %> <small class="text-danger"><sup>※</sup>入力必須</small>
+        <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %>
+      </div>
+
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_street, "番地" %><small class="text-danger">半角数字と-(ﾊｲﾌﾝ)のみ入力してください<sup>※</sup>入力必須</small>
+        <%= f.text_field :address_street, autocomplete: 'address_street',placeholder:"0-0-0", class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row col-md-10 mt-4">
+      <div class="field col-sm-5 col-md-5">
+        <%= f.label :address_other, "建物名や部屋番号など" %>
+        <%= f.text_field :address_other, autocomplete: 'address_other', class: 'form-control' %>
+      </div>
+    </div>
+
+    <%= f.submit "更新する", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
