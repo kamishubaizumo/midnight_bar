@@ -19,6 +19,10 @@ import "../stylesheets/application.scss";
 import "mystyle.scss";
 import "myscript.js";
 
+// webpackerでフォントを読み込む
+import "fonts/yosugara1.1.ttf";
+import "fonts/かんじゅくゴシック.otf";
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

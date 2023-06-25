@@ -1,31 +1,49 @@
-<div class="background">
-  <div class="container">
-    <div class="my-card">
-      <div class="my-card-header">
-      </div>
-      <div class="my-card-body">
-        <h3 class="my-card-title text-center">会員証</h3>
-        <div class="my-card-content">
-          <p><span class="profile">フリガナ</span><span class="tegaki"><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></span></p>
-        </div>
-        <div class="my-card-content">
-          <p><span class="profile">会員名</span><span class="tegaki"><%= @customer.last_name %>&nbsp;<%= @customer.first_name %></span></p>
-        </div>
+<div class="my-card">
+  <div class="my-card-header">
+      <h3 class="my-card-title text-center">会員証</h3>
+  </div>
+  <div class="my-card-profile">
+    <div class="my-card-name">
+      <p class="profile profile-kana"><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></p>
+      <p class="profile profile-name"><%= @customer.last_name %>&nbsp;<%= @customer.first_name %></p>
+    </div>
 
-        <div class="my-card-content">
-          <p><span class="profile"> 生年月日</span><span class="tegaki"><%= @customer.birth.strftime("%Y年%m月%d日") %></span>&nbsp;/&nbsp; <span class="profile">年齢</span><span class="tegaki"><%= @customer.age %></span><span class="profile">歳</span></p>
-        </div>
-        <div class="my-card-content">
-          <p><span class="profile">電話番号</span><span class="tegaki"><%= @customer.tel_number %></span> &nbsp;/&nbsp; <span class="profile">メールアドレス</span><span class="tegaki"><%= @customer.email %></span></p>
-        </div>
-        <div class="my-card-content">
-          <p><span class="profile">郵便番号</span><span class="tegaki"><%= @customer.postcode %></span></p>
-        </div>
-        <div class="my-card-content">
-          <p><span class="profile">住所</span><span class="tegaki"><%= @customer.join_address %></span></p>
-        </div>
-        
-      </div>
+    <div class="my-card-birthday">
+      <p class="profile">生年月日： <%= @customer.birth.strftime("%Y年%m月%d日") %>
+      &nbsp;ご年齢：&nbsp;<%= @customer.age %> 歳</p>
+    </div>
+
+
+    <div class="my-card-contact">
+      <table class="profile">
+        <tr>
+          <th>TEL:</th>
+          <td><%= @customer.tel_number %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>&#12306;:</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <th>住所:</th>
+          <td><%= @customer.join_address %></td>
+        </tr>
+      </table>
     </div>
   </div>
+
+    <div class="my-card-footer">
+      <span class="my-card-logo">MIDNIGHT BAR</span>
+    </div>
+        
+          
+        
+        
+
+        
+        
 </div>

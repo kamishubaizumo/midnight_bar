@@ -21,40 +21,91 @@
 }
 
 
-
-.background {
-  background: #ccc;
-  width: 100%;
+// webpackerでフォントを読み込む。packs/application.jsでimport
+@font-face {
+  font-family: "yosugara";
+  src: url("../javascript/fonts/yosugara1.1.ttf") format("truetype");
 }
 
-.container {
-  margin: 0 auto;
-
+@font-face {
+  font-family: "04かんじゅくゴシック";
+  src: url("../javascript/fonts/かんじゅくゴシック.otf") format("truetype");
 }
 
 
 
 .my-card {
-
-  background-image: image-url('wasi.jpg') !important;
+  margin: 15px auto !important;
+  width: 600px !important;
+  height: 420px;
+  background: #fff !important;
   width: 100%;
+  font-family: "04かんじゅくゴシック";
 
-}
-
-.my-card-title {
-  font-family: "MS Gothic";
-  color: #6b6b6b !important;
 }
 
 .my-card-header {
-  background: #fff;
+  padding: 20px 0;
 }
 
-.my-card-body h3 {
+.my-card-title {
+  margin: 10px auto;
+  color: #6b6b6b !important;
+  font-size: 28px !important;
+}
+
+
+.my-card-name {
   text-align: center;
-  color: #000;
+  margin: 30px 0 80px 0;
+
 }
 
-.my-card-content {
-  border-bottom: solid 1px #FFCC33
+.my-card-name .profile-kana {
+  font-size: 14px !important;
+}
+
+.my-card-name .profile-name {
+  font-size: 25px;
+}
+
+.my-card-profile {
+  margin: 0 20px;
+}
+
+.my-card .profile {
+  text-align: center;
+  color: #555 !important;
+
+}
+
+.my-card-birthday {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: solid 3px #FC3
+}
+
+
+.my-card-contact {
+  margin-top: 20px;
+}
+
+.my-card-contact table {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.my-card-contact .profile tr th,
+.my-card-contact .profile tr td {
+  text-align: left;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+.my-card-footer {
+  text-align: right;
+  font-family: "Neoneon";
+  padding: 0 20px 0 0;
+  font-size: 28px;
+  color: #fa0;
 }
