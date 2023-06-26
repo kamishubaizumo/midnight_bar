@@ -10,9 +10,11 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
-      redirect_to customer_path
+    if @customer.update!(customer_params)
+      redirect_to customer_path(@customer)
+      flash[:notice] = "プロフィールを更新しました"
     else
+      flash[:notice] = "プロフィールの更新に失敗しました"
       render :edit
     end
   end
@@ -35,7 +37,7 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-   # permitに:email,:passwordは設定したらダメっぽい。更新するとログアウトする。
+# email,passwordは書いちゃだめ。
   def customer_params
     params.require(:customer).permit(
       :last_name,
@@ -47,7 +49,7 @@ class Public::CustomersController < ApplicationController
       :address_city,
       :address_street,
       :address_other,
-      :tel_number,
+      :tel_number
     )
   end
 

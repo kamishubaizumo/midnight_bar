@@ -4,7 +4,7 @@
   </div>
 
   <%= form_with model: @customer do |f| %>
-
+   
 
     <div class="row col-md-10 mt-2">
       <div class="field col-sm-5 col-md-5 mt-2">
@@ -65,7 +65,7 @@
 
       <div class="field col-sm-5 col-md-5">
         <%= f.label :address_street, "番地" %><small class="text-danger">半角数字と-(ﾊｲﾌﾝ)のみ入力してください<sup>※</sup>入力必須</small>
-        <%= f.text_field :address_street, autocomplete: 'address_street',placeholder:"0-0-0", class: 'form-control' %>
+        <%= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control' %>
       </div>
     </div>
 
